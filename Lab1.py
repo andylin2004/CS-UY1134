@@ -104,3 +104,23 @@ def scramble_word(word):
 
 for i in range(2):
     print(scramble_word("pokemon"))
+
+# question 3c
+
+def scramble_word_game(word):
+    scrambled_word = scramble_word(word)
+    outString = "Unscramble the word:"
+    for char in scrambled_word:
+        outString += "  " + char
+    print(outString)
+    for i in range(3):
+        inputString = input("Try #"+str(i)+": ")
+        if inputString == word:
+            print("Yay, you got it!")
+            return
+        else:
+            print("Wrong!")
+    
+    print("Too bad! You lose!")
+
+scramble_word_game("amogus")
