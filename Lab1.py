@@ -1,7 +1,6 @@
 from random import randint
 
 # question 1
-
 def can_construct(word , letters): 
     """
     word - type: str
@@ -26,7 +25,6 @@ print(can_construct("apples", "aples"))
 print(can_construct("apples", "aplespl"))
 
 # question 2
-
 class Complex:
     def __init__(self, a, b):
         self.a = a
