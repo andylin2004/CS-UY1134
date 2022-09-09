@@ -1,3 +1,5 @@
+from random import randint
+
 # question 1
 
 def can_construct(word , letters): 
@@ -69,3 +71,22 @@ print(cplx1 * cplx2) #9 + 21i
 # original objects remain unchanged
 print(cplx1) #5 + 2i
 print(cplx2) #3 + 3i
+
+# question 3
+def create_permutation(n):
+    intRange = []
+    for i in range(n):
+        if len(intRange) == 0:
+            intRange.append(i)
+        elif len(intRange) == 1:
+            if randint(0,1):
+                intRange.append(i)
+            else:
+                intRange.insert(0, len(intRange))
+        else:
+            intRange.insert(randint(0, len(intRange)), i)
+
+    return intRange
+
+for _ in range(2):
+    print(create_permutation(6))
