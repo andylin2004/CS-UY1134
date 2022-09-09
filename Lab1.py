@@ -23,3 +23,15 @@ def can_construct(word , letters):
 print(can_construct("apples", "aples"))
 print(can_construct("apples", "aplespl"))
 
+# question 2
+
+class Complex:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def __add__(self, other):
+        return Complex(self.a + other.a, self.b + other.b)
+
+    def __sub__(self, other):
+        return Complex(self.a - other.a, self.b - other.b)
