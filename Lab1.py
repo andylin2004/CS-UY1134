@@ -72,7 +72,7 @@ print(cplx1 * cplx2) #9 + 21i
 print(cplx1) #5 + 2i
 print(cplx2) #3 + 3i
 
-# question 3
+# question 3a
 def create_permutation(n):
     intRange = []
     for i in range(n):
@@ -90,3 +90,17 @@ def create_permutation(n):
 
 for _ in range(2):
     print(create_permutation(6))
+
+# question 3b
+def scramble_word(word):
+    scrambled_positions = create_permutation(len(word))
+    
+    new_word = ""
+    
+    for i in scrambled_positions:
+        new_word += word[i]
+
+    return new_word
+
+for i in range(2):
+    print(scramble_word("pokemon"))
