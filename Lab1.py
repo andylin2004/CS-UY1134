@@ -35,3 +35,13 @@ class Complex:
 
     def __sub__(self, other):
         return Complex(self.a - other.a, self.b - other.b)
+
+    def __mul__(self, other):
+        return Complex(self.a * other.a - self.b * other.b, self.b * other.a + self.a * other.b)
+
+    def __repr__(self):
+        return str(self.a) + " + " + str(self.b) + "i"
+
+    def __iadd__(self, other):
+        self.a += other.a
+        self.b += other.b
