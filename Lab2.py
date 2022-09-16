@@ -28,3 +28,12 @@ print(poly3.data) # return [5, 7, 0, -4, 2, 0, 3]
 print(poly1(1)) # return 3
 print(poly2(1)) # return 10
 print(poly3(1)) # return 13
+
+# question 2
+
+def powers_of_two(n):
+    for i in range(n):
+        yield 2 ** i
+
+for i in powers_of_two(6):
+    print(i)
