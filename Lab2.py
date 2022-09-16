@@ -37,3 +37,34 @@ def powers_of_two(n):
 
 for i in powers_of_two(6):
     print(i)
+
+# question 3
+
+class UnsignedBinaryInteger:
+    def __init__(self, num_str):
+        self.num_str = num_str
+    
+    def __eq__(self, other):
+        return self.num_str == other.num_str
+
+    def __lt__(self, other):
+        if self.num_str == other.num_str:
+            return False
+        elif len(self.num_str) == len(other.num_str):
+            for i in range(len(self.num_str)):
+                if int(self.num_str[i]) != int(other.num_str[i]):
+                    return int(self.num_str[i]) < int(other.num_str[i])
+        else:
+            return len(self.num_str) < len(other.num_str)
+
+    def __gt__(self, other):
+        if self.num_str == other.num_str:
+            return False
+        elif len(self.num_str) == len(other.num_str):
+            if int(self.num_str[i]) != int(other.num_str[i]):
+                    return int(self.num_str[i]) < int(other.num_str[i])
+        else:
+            return len(self.num_str) > len(other.num_str)
+
+    def __repr__(self):
+        return "0b"+self.num_str
