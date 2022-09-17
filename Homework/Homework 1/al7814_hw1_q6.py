@@ -1,9 +1,9 @@
 class Vector:
     def __init__(self, d):
-        if isinstance(d) == int:
+        if isinstance(d, int):
             self.coords = [0]*d
-        elif isinstance(d) == list:
-            self.coords = list
+        elif isinstance(d, list):
+            self.coords = d
 
     def __len__(self):
         return len(self.coords)
@@ -49,19 +49,19 @@ class Vector:
         return result
     
     def __neg__(self):
-        result = Vector(self.coords)
+        result = Vector(len(self))
         for i in range(len(result)):
-            result[i] *= -1
+            result[i] = self[i] * -1
 
         return result
 
     def __mul__(self, multiplier):
-        if isinstance(multiplier) == int:
-            result = Vector(self.coords)
+        if isinstance(multiplier, int):
+            result = Vector(len(self))
             for i in range(len(result)):
-                result[i] *= multiplier
+                result[i] = self[i] * multiplier
             return result
-        elif isinstance(multiplier) == Vector:
+        elif isinstance(multiplier, Vector):
             if len(self) == len(multiplier):
                 result = 0
                 for i in range(len(self)):
@@ -73,7 +73,31 @@ class Vector:
 
 
     def __rmul__(self, multiplier):
-        result = Vector(self.coords)
+        result = Vector(len(self))
         for i in range(len(result)):
-            result[i] *= multiplier
+            result[i] = self[i] * multiplier
         return result
+
+if __name__ == "__main__":
+    v1 = Vector(5)
+    v1[1] = 10
+    v1[-1] = 10
+    print(v1)
+
+    v2 = Vector([2, 4, 6, 8, 10])
+    print(v2)
+
+    u1 = v1 + v2
+    print(u1)
+
+    u2 = -v2
+    print(u2)
+
+    u3 = 3 * v2
+    print(u3)
+
+    u4 = v2 * 3
+    print(u4)
+
+    u5 = v1 * v2
+    print(u5)
