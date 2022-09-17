@@ -1,6 +1,9 @@
 class Vector:
     def __init__(self, d):
-        self.coords = [0]*d
+        if isinstance(d) == int:
+            self.coords = [0]*d
+        elif isinstance(d) == list:
+            self.coords = list
     def __len__(self):
         return len(self.coords)
     def __getitem__(self, j):
