@@ -16,3 +16,4 @@ def fibs(n):
 
 if __name__ == "__main__":
     print([x for x in fibs(8)])
+    print([x for x in fibs(10)])
