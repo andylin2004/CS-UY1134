@@ -53,3 +53,9 @@ class Vector:
         for i in range(len(result)):
             result[i] *= -1
         return result
+
+    def __mul__(self, multiplier):
+        result = Vector(self.coords)
+        for i in range(result):
+            result[i] *= multiplier
+        return result
