@@ -47,3 +47,9 @@ class Vector:
             result[j] = self[j] - other[j]
         
         return result
+    
+    def __neg__(self):
+        result = Vector(self.coords)
+        for i in range(len(result)):
+            result[i] *= -1
+        return result
