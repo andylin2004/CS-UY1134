@@ -61,10 +61,47 @@ class UnsignedBinaryInteger:
         if self.num_str == other.num_str:
             return False
         elif len(self.num_str) == len(other.num_str):
-            if int(self.num_str[i]) != int(other.num_str[i]):
-                    return int(self.num_str[i]) < int(other.num_str[i])
+            for i in range(len(self.num_str)):
+                if int(self.num_str[i]) != int(other.num_str[i]):
+                    return int(self.num_str[i]) > int(other.num_str[i])
         else:
             return len(self.num_str) > len(other.num_str)
 
+    def is_twos_power(self):
+        onesCount = 0
+        for digit in self.num_str:
+            if digit == '1':
+                onesCount += 1
+                if onesCount > 1:
+                    return False
+        return True
+
+    def largest_twos_power(self):
+        largestPowerToUse = -1
+        for i in range(len(self.num_str)):
+            if self.num_str[len(self.num_str) - 1 - i] == '1':
+                largestPowerToUse = i
+        
+        if largestPowerToUse != -1:
+            return 2 ** largestPowerToUse
+        
+        return 0
+
     def __repr__(self):
         return "0b"+self.num_str
+
+num = UnsignedBinaryInteger("1101")
+print(num.is_twos_power())
+print(num.largest_twos_power())
+num2 = UnsignedBinaryInteger("1111")
+print(num2.is_twos_power())
+print(num2.largest_twos_power())
+num3 = UnsignedBinaryInteger("1000")
+print(num3.is_twos_power())
+print(num3.largest_twos_power())
+print(num > num2)
+print(num < num2)
+print(num > num3)
+print(num < num3)
+print(num2 > num3)
+print(num2 < num3)
