@@ -22,7 +22,8 @@ class Vector:
 
         for j in range(len(self)):
             result[j] = self[j] + other[j]
-            return result
+        
+        return result
 
     def __eq__(self, other):
         return self.coords == other.coords
@@ -32,6 +33,17 @@ class Vector:
 
     def __str__(self):
         return '<' + str(self.coords)[1:-1] + '>'
-        
+
     def __repr__(self):
         return str(self)
+    
+    def __sub__(self, other):
+        if (len(self) != len(other)):
+            raise ValueError("dimensions must agree")
+
+        result = Vector(len(self))
+
+        for j in range(len(self)):
+            result[j] = self[j] - other[j]
+        
+        return result
