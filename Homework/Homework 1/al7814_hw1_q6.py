@@ -65,7 +65,7 @@ class Vector:
             if len(self) == len(multiplier):
                 result = 0
                 for i in range(len(self)):
-                    result += self[i] + multiplier[i]
+                    result += self[i] * multiplier[i]
 
                 return result
             else:
