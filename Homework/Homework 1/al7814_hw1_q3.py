@@ -8,3 +8,6 @@ def sum_under_square(n):
         base += 1
     
     return total
+
+if __name__ == "__main__":
+    print(sum_under_square(17))
