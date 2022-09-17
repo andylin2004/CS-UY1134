@@ -52,16 +52,28 @@ class Vector:
         result = Vector(self.coords)
         for i in range(len(result)):
             result[i] *= -1
+
         return result
 
     def __mul__(self, multiplier):
-        result = Vector(self.coords)
-        for i in range(result):
-            result[i] *= multiplier
-        return result
+        if isinstance(multiplier) == int:
+            result = Vector(self.coords)
+            for i in range(len(result)):
+                result[i] *= multiplier
+            return result
+        elif isinstance(multiplier) == Vector:
+            if len(self) == len(multiplier):
+                result = 0
+                for i in range(len(self)):
+                    result += self[i] + multiplier[i]
+
+                return result
+            else:
+                raise ValueError("dimensions must agree")
+
 
     def __rmul__(self, multiplier):
         result = Vector(self.coords)
-        for i in range(result):
+        for i in range(len(result)):
             result[i] *= multiplier
         return result
