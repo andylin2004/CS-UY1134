@@ -28,7 +28,16 @@ def sum_under_odd_square(n):
     
     return total
 
+# part d
+
+def gen_next_odd_square(n):
+    base = 1
+    while base ** 2 < n:
+        yield base ** 2
+        base += 2
+
 if __name__ == "__main__":
     print(sum_under_square(17))
     print(sum([x for x in gen_next_square(17)]))
     print(sum_under_odd_square(17))
+    print(sum([x for x in gen_next_odd_square(17)]))
