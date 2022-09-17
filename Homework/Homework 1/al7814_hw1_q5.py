@@ -14,4 +14,5 @@ def fibs(n):
                 last = second_to_last
                 second_to_last += temp
 
-print([x for x in fibs(8)])
+if __name__ == "__main__":
+    print([x for x in fibs(8)])
