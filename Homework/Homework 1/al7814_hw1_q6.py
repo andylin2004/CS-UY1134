@@ -59,3 +59,9 @@ class Vector:
         for i in range(result):
             result[i] *= multiplier
         return result
+
+    def __rmul__(self, multiplier):
+        result = Vector(self.coords)
+        for i in range(result):
+            result[i] *= multiplier
+        return result
