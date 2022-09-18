@@ -12,7 +12,6 @@ def shift(lst, k, shift_direction = "left"):
                 lst[i+1] = lst[i]
             lst[0] = tmp
 
-
 if __name__ == "__main__":
     lst = [1,2,3,4,5,6]
     print(lst)
