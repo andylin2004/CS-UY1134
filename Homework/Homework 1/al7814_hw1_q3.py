@@ -17,6 +17,9 @@ def gen_next_square(n):
         yield base ** 2
         base += 1
 
+def iter_sum_under_square(n):
+    return sum([x for x in gen_next_square(n)])
+
 # part c
 
 def sum_under_odd_square(n):
@@ -36,8 +39,11 @@ def gen_next_odd_square(n):
         yield base ** 2
         base += 2
 
+def iter_sum_under_odd_square(n):
+    return sum([x for x in gen_next_odd_square(n)])
+
 if __name__ == "__main__":
     print(sum_under_square(17))
-    print(sum([x for x in gen_next_square(17)]))
+    print(iter_sum_under_square(17))
     print(sum_under_odd_square(17))
-    print(sum([x for x in gen_next_odd_square(17)]))
+    print(iter_sum_under_odd_square(17))
