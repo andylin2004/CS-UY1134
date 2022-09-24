@@ -35,7 +35,6 @@ reverse_list(list, 1, 3)
 print(list)
 
 #question 2
-#part a
 
 def move_zeros(nums): 
     """
@@ -53,4 +52,28 @@ def move_zeros(nums):
 
 list = [0, 1, 0, 3, 13, 0]
 move_zeros(list)
+print(list)
+
+#question 3
+
+def shift(lst, k, shift_direction = "left"):
+    if shift_direction == "left":
+        for _ in range(k):
+            tmp = lst[0]
+            for i in range(1, len(lst)):
+                lst[i-1] = lst[i]
+            lst[len(lst)-1] = tmp
+    elif shift_direction == "right":
+        for _ in range(k):
+            tmp = lst[len(lst) - 1]
+            for i in range(len(lst) - 2, -1, -1):
+                lst[i+1] = lst[i]
+            lst[0] = tmp
+
+list = [1,2,3,4,5,6]
+shift(list, 2)
+print(list)
+
+list = [1,2,3,4,5,6]
+shift(list, 2, 'right')
 print(list)
