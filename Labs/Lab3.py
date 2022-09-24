@@ -43,20 +43,13 @@ def move_zeros(nums):
     : return type: None
     """
 
-    zeroToMove = -1
-    i = 0
-    while i < len(nums):
-        print(i)
-        if nums[i] != 0 and zeroToMove != -1 and zeroToMove < i:
-                nums[zeroToMove] = nums[i]
-                nums[i] = 0
-                tmp = zeroToMove
-                zeroToMove = i
-                i = tmp
-        elif zeroToMove > i and nums[i] == 0:
-            zeroToMove = i
-            i-=1
-        i += 1
+    move_zero_at = 0
+    for i in range(len(nums)):
+        if nums[i] == 0 and (i < move_zero_at or (nums[move_zero_at] != 0 and move_zero_at == 0)):
+            move_zero_at = i
+        elif i > move_zero_at and nums[i] != 0:
+            nums[i], nums[move_zero_at] = nums[move_zero_at], nums[i]
+            move_zero_at += 1
 
 list = [0, 1, 0, 3, 13, 0]
 move_zeros(list)
