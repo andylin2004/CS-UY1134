@@ -77,3 +77,19 @@ print(list)
 list = [1,2,3,4,5,6]
 shift(list, 2, 'right')
 print(list)
+
+def max_sum_subarray(nums, k):
+    window = len(nums)//k
+    total = 0
+    max_total = 0
+    for i in range(len(nums)):
+        total += nums[i]
+        if i < window:
+            max_total = total
+        else:
+            total -= nums[i-window]
+            max_total = max(max_total, total)
+    return max_total
+
+list = [1,12,-5,-6,50,3]
+print(max_sum_subarray(list, 2))
