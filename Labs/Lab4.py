@@ -39,3 +39,31 @@ def reverse_vowels(input_str):
     return "".join(list_str)
 
 print(reverse_vowels("agar.io"))
+
+# question 3
+# part a
+
+def find_missing(lst):
+    """
+    : nums type: list[int] (sorted)
+    : return type: int
+    """
+    left = 0
+    right = len(lst) - 1
+    while True:
+        mid = (left + right) // 2 
+        if right - left == 1:
+            if lst[left] != left:
+                return left
+            elif lst[right] != right:
+                return right
+            else:
+                return None
+        elif lst[mid] != mid and lst[right] != right:
+            right = mid
+        elif lst[right] != right:
+            left = mid
+        else:
+            return None
+
+print(find_missing([0,1,2,3,4,5,7,8]))
