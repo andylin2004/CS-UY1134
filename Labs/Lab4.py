@@ -89,6 +89,8 @@ def find_pivot(lst):
     : val type: int
     : return type: int (index if found), None(if not found)
     """
+    if len(lst) == 0:
+        return None
     left = 0
     right = len(lst) - 1
     while True:
@@ -104,3 +106,29 @@ def find_pivot(lst):
             left = mid
 
 print(find_pivot([3, 6, 7, 10, 12, 14,15,20,21, 1,]))
+
+# part 2
+def shift_binary_search(lst, target):
+    """
+    : lst type: list[int] #sorted and then shifted
+    : target type: int
+    : return type: int (index if found), None(if not found)
+    """
+    left = 0
+    right = len(lst) - 1
+    pivot = find_pivot(lst)
+    if lst[left] <= target <= lst[pivot - 1]:
+        right = pivot
+    elif lst[pivot] <= target <= lst[right]:
+        left = pivot
+    while True:
+        mid = (left + right) // 2
+        if lst[mid] == target:
+            return mid
+        elif lst[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+
+print(shift_binary_search([15, 20, 21, 1, 3, 6, 7, 10, 12, 14], 21))
