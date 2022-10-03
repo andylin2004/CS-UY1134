@@ -41,7 +41,7 @@ def reverse_vowels(input_str):
 print(reverse_vowels("agar.io"))
 
 # question 3
-# part a
+# part b
 
 def find_missing(lst):
     """
@@ -66,4 +66,17 @@ def find_missing(lst):
         else:
             return None
 
-print(find_missing([0,1,2,3,4,5,7,8]))
+print(find_missing([0,1,2,3,4,5,7,8,9]))
+
+# part c
+
+def find_missing_unsorted(lst):
+    """
+    : nums type: list[int] (unsorted)
+    : return type: int
+    """
+    lst_total = sum(lst)
+    return len(lst)*(len(lst) + 1)//2 - lst_total
+
+print(find_missing_unsorted([8, 6, 0, 4, 3, 5, 1, 2]))
+
