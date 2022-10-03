@@ -80,3 +80,27 @@ def find_missing_unsorted(lst):
 
 print(find_missing_unsorted([8, 6, 0, 4, 3, 5, 1, 2]))
 
+# question 4
+# part 1
+
+def find_pivot(lst):
+    """
+    : lst type: list[int] #sorted and then shifted
+    : val type: int
+    : return type: int (index if found), None(if not found)
+    """
+    left = 0
+    right = len(lst) - 1
+    while True:
+        mid = (left + right) // 2
+        if right-left == 1:
+            if lst[left] < lst[right]:
+                return left
+            else:
+                return right
+        if lst[left] > lst[mid]:
+            right = mid
+        elif lst[mid] > lst[right]:
+            left = mid
+
+print(find_pivot([3, 6, 7, 10, 12, 14,15,20,21, 1,]))
