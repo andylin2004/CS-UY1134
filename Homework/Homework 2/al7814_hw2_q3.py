@@ -8,5 +8,6 @@ def factors(num):
         if num % i == 0 and num // i != i:
             yield num // i
 
-for curr_factor in factors(100):
-    print(curr_factor)
+if __name__ == "__main__":
+    for curr_factor in factors(100):
+        print(curr_factor)
