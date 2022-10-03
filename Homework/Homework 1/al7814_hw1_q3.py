@@ -3,7 +3,7 @@
 def sum_under_square(n):
     total = 0
     base = 1
-    while base ** 2 < n:
+    while base < n:
         total += base ** 2
         base += 1
     
@@ -11,14 +11,8 @@ def sum_under_square(n):
 
 # part b
 
-def gen_next_square(n):
-    base = 1
-    while base ** 2 < n:
-        yield base ** 2
-        base += 1
-
 def iter_sum_under_square(n):
-    return sum([x for x in gen_next_square(n)])
+    return sum([x ** 2 for x in range(n)])
 
 # part c
 
