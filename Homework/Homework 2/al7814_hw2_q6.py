@@ -5,7 +5,6 @@ def two_sum(srt_lst, target):
         right = len(srt_lst) - 1
         while right - left > 1:
             mid = (left + right) // 2
-            print(compliment, left, mid, right)
             if srt_lst[mid] > compliment:
                 right = mid
             elif srt_lst[mid] < compliment:
