@@ -18,6 +18,9 @@ def findChange(lst01):
             return right
         else:
             return None
+    elif right - left == 0:
+        if lst01[0] == 1:
+            return 0
 
 if __name__ == "__main__":
     lst = []
@@ -31,3 +34,4 @@ if __name__ == "__main__":
             lst.append(1)
     print(lst)
     print(findChange(lst))
+    print(findChange([0,1]))
