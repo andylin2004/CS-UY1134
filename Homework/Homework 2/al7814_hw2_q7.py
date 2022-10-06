@@ -1,21 +1,33 @@
+from random import randint
+
 def findChange(lst01):
     left = 0
     right = len(lst01) - 1
-    while True:
+    while right - left > 1:
         mid = (left + right) // 2
-        if right - left == 1:
-            if lst01[left] == 1:
-                return left
-            if lst01[right] == 1:
-                return right
-            else:
-                return None
         if lst01[left] == lst01[mid] == 0:
             left = mid + 1
         elif lst01[mid] == 1:
             right = mid
         else:
             return None
+    if right - left == 1:
+        if lst01[left] == 1:
+            return left
+        elif lst01[right] == 1:
+            return right
+        else:
+            return None
 
 if __name__ == "__main__":
-    print(findChange([0, 0, 0, 1, 1, 1, 1, 1]))
+    lst = []
+    zero = True
+    for i in range(1000000000000):
+        if randint(0,100) == 1:
+            zero = False
+        if zero:
+            lst.append(0)
+        else:
+            lst.append(1)
+    print(lst)
+    print(findChange(lst))
