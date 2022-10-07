@@ -70,3 +70,9 @@ class ArrayList:
         for i in range(other.n):
             self.append(other[i])
         return self
+
+    def __mul__(self, multiplier):
+        new_array = ArrayList()
+        for i in range(self.n*multiplier):
+            new_array.append(self[i % multiplier])
+        return new_array
