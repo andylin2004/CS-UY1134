@@ -59,3 +59,8 @@ class ArrayList:
         for i in range(other.n):
             new_array.append(other[i])
         return new_array
+
+    def __iadd__(self, other):
+        for i in range(other.n):
+            self.append(other[i])
+        return self
