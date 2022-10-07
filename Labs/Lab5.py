@@ -76,3 +76,6 @@ class ArrayList:
         for i in range(self.n*multiplier):
             new_array.append(self[i % multiplier])
         return new_array
+
+    def __rmul__(self, multiplier):
+        return self.__mul__(multiplier)
