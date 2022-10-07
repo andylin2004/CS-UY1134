@@ -49,3 +49,5 @@ class ArrayList:
         for elem in iter_collection:
             self.append(elem)
 
+    def __repr__(self) -> str:
+        return "[" + ", ".join(self.data_arr[:self.n]) + "]"
