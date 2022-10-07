@@ -50,4 +50,12 @@ class ArrayList:
             self.append(elem)
 
     def __repr__(self) -> str:
-        return "[" + ", ".join(self.data_arr[:self.n]) + "]"
+        return "[" + ", ".join(self[:self.n]) + "]"
+
+    def __add__(self, other):
+        new_array = ArrayList()
+        for i in range(self.n):
+            new_array.append(self[i])
+        for i in range(other.n):
+            new_array.append(other[i])
+        return new_array
