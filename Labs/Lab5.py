@@ -29,18 +29,21 @@ class ArrayList:
 
 
     def __getitem__(self, ind):
-        if (not (ind <= self.n - 1)):
+        if (not (ind <= self.n - 1) or self.n - 1 + ind >= 0):
             raise IndexError('invalid index')
-        elif ind < 0 and self.n - 1 + ind >= 0:
+        elif ind < 0:
             return self.data_arr[self.n - 1 + ind]
         else:
             return self.data_arr[ind]
 
 
     def __setitem__(self, ind, val):
-        if (not (0 <= ind <= self.n - 1)):
+        if (not (ind <= self.n - 1) or self.n - 1 + ind >= 0):
             raise IndexError('invalid index')
-        self.data_arr[ind] = val
+        elif ind < 0:
+            self.data_arr[self.n - 1 + ind] = val
+        else:
+            self.data_arr[ind] = val
 
 
     def __iter__(self):
