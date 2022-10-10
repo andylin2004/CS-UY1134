@@ -60,7 +60,7 @@ class ArrayList:
             self.append(elem)
 
     def __repr__(self) -> str:
-        return "[" + ", ".join(self[:self.n]) + "]"
+        return str(self.data_arr)
 
     def __add__(self, other):
         new_array = ArrayList()
@@ -84,6 +84,19 @@ class ArrayList:
     def __rmul__(self, multiplier):
         return self.__mul__(multiplier)
 
+    def remove(self, item):
+        found_item = False
+        for i in range(self.n):
+            print(i)
+            if self.data_arr[i] == item and not found_item:
+                found_item = True
+                self.n -= 1
+            if found_item:
+                if i != self.n:
+                    self.data_arr[i] = self.data_arr[i+1]
+
 arr = ArrayList("Python")
-for i in range(len(arr)):
-    print(arr[i])
+print(arr)
+arr = ArrayList([1,2,3,2,3,4,2,2])
+arr.remove(2)
+print(arr)
