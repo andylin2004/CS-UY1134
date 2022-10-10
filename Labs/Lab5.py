@@ -1,12 +1,16 @@
-import ctypes  # provides low-level arrays
+import ctypes # provides low-level arrays
+from typing import Iterable 
 def make_array(n):
     return (n * ctypes.py_object)()
 
 class ArrayList:
-    def __init__(self):
+    def __init__(self, iterable):
         self.data_arr = make_array(1)
         self.capacity = 1
         self.n = 0
+        if isinstance(iterable, Iterable):
+            for i in iterable:
+                self.append(i)
 
 
     def __len__(self):
@@ -29,7 +33,7 @@ class ArrayList:
 
 
     def __getitem__(self, ind):
-        if (not (ind <= self.n - 1) or self.n - 1 + ind >= 0):
+        if (not (ind <= self.n - 1 or self.n - 1 + ind >= 0)):
             raise IndexError('invalid index')
         elif ind < 0:
             return self.data_arr[self.n - 1 + ind]
@@ -79,3 +83,7 @@ class ArrayList:
 
     def __rmul__(self, multiplier):
         return self.__mul__(multiplier)
+
+arr = ArrayList("Python")
+for i in range(len(arr)):
+    print(arr[i])
