@@ -86,7 +86,8 @@ class ArrayList:
 
     def remove(self, item):
         found_item = False
-        for i in range(self.n):
+        i = 0
+        while i < self.n:
             print(i)
             if self.data_arr[i] == item and not found_item:
                 found_item = True
@@ -94,6 +95,7 @@ class ArrayList:
             if found_item:
                 if i != self.n:
                     self.data_arr[i] = self.data_arr[i+1]
+            i += 1
 
 arr = ArrayList("Python")
 print(arr)
