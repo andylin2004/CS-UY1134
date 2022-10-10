@@ -88,7 +88,6 @@ class ArrayList:
         found_item = False
         i = 0
         while i < self.n:
-            print(i)
             if self.data_arr[i] == item and not found_item:
                 found_item = True
                 self.n -= 1
@@ -96,9 +95,24 @@ class ArrayList:
                 if i != self.n:
                     self.data_arr[i] = self.data_arr[i+1]
             i += 1
+    
+    def removeAll(self, item):
+        lookAheadRange = 0
+        i = 0
+        while i < self.n:
+            if self.data_arr[i+lookAheadRange] == item:
+                lookAheadRange += 1
+                self.n -= 1
+            else:
+                self.data_arr[i] = self.data_arr[i+lookAheadRange]
+                i += 1
+
 
 arr = ArrayList("Python")
 print(arr)
 arr = ArrayList([1,2,3,2,3,4,2,2])
 arr.remove(2)
+print(arr)
+arr = ArrayList([2,1,2,3,2,3,4,2,2])
+arr.removeAll(2)
 print(arr)
