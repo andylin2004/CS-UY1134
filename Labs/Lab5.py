@@ -60,7 +60,7 @@ class ArrayList:
             self.append(elem)
 
     def __repr__(self) -> str:
-        return str(self.data_arr)
+        return str(self.data_arr[:self.n])
 
     def __add__(self, other):
         new_array = ArrayList()
