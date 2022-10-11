@@ -107,6 +107,7 @@ class ArrayList:
                 self.data_arr[i] = self.data_arr[i+lookAheadRange]
                 i += 1
     
+    #part a
     def insert(self, index, val):
         if index < 0 or index > self.n:
             raise IndexError("Invalid index")
@@ -119,6 +120,18 @@ class ArrayList:
                 self.data_arr[i+1] = self.data_arr[i]
             self.data_arr[index] = val
             self.n += 1
+
+    #part b
+    def pop(self):
+        if self.n == 0:
+            raise IndexError("Pop called on empty list")
+        else:
+            popped_value = self.data_arr[self.n - 1]
+            self.data_arr[self.n - 1] = None
+            self.n -= 1
+            if self.n < self.capacity // 4:
+                self.resize(self.capacity // 2)
+            return popped_value
     
 if __name__ == "__main__":
     arr_lst = ArrayList()
