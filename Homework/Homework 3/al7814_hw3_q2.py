@@ -139,3 +139,10 @@ if __name__ == "__main__":
         arr_lst.append(i)
     arr_lst.insert(2, 30)
     print(arr_lst)
+    arr_lst = ArrayList()
+    for i in range(1, 5+1):
+        arr_lst.append(i)
+    while len(arr_lst) > 1:
+        print(arr_lst.pop())
+    print(arr_lst)
+    print(arr_lst.capacity)
