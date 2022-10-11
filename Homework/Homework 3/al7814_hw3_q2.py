@@ -4,7 +4,7 @@ def make_array(n):
     return (n * ctypes.py_object)()
 
 class ArrayList:
-    def __init__(self, iterable):
+    def __init__(self, iterable = None):
         self.data_arr = make_array(1)
         self.capacity = 1
         self.n = 0
@@ -118,6 +118,7 @@ class ArrayList:
             for i in range(self.n - 1, index - 1, -1):
                 self.data_arr[i+1] = self.data_arr[i]
             self.data_arr[index] = val
+            self.n += 1
     
 if __name__ == "__main__":
     arr_lst = ArrayList()
