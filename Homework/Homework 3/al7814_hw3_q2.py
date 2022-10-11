@@ -106,12 +106,22 @@ class ArrayList:
             else:
                 self.data_arr[i] = self.data_arr[i+lookAheadRange]
                 i += 1
-
-arr = ArrayList("Python")
-print(arr)
-arr = ArrayList([1,2,3,2,3,4,2,2])
-arr.remove(2)
-print(arr)
-arr = ArrayList([2,1,2,3,2,3,4,2,2])
-arr.removeAll(2)
-print(arr)
+    
+    def insert(self, index, val):
+        if index < 0 or index > self.n:
+            raise IndexError("Invalid index")
+        elif index == self.n:
+            self.append(val)
+        else:
+            if self.n == self.capacity:
+                self.resize(self.capacity * 2)
+            for i in range(self.n - 1, index - 1, -1):
+                self.data_arr[i+1] = self.data_arr[i]
+            self.data_arr[index] = val
+    
+if __name__ == "__main__":
+    arr_lst = ArrayList()
+    for i in range(1, 4+1):
+        arr_lst.append(i)
+    arr_lst.insert(2, 30)
+    print(arr_lst)
