@@ -121,12 +121,21 @@ class ArrayList:
             self.data_arr[index] = val
             self.n += 1
 
-    #part b
-    def pop(self):
+    #part b and c
+    def pop(self, index = None):
         if self.n == 0:
             raise IndexError("Pop called on empty list")
         else:
-            popped_value = self.data_arr[self.n - 1]
+            if index:
+                if index < 0 or index > self.n - 1:
+                    raise IndexError("Invalid index")
+                else:
+                    popped_value = self.data_arr[index]
+                    for i in range(index + 1, self.n):
+                        self.data_arr[i - 1] = self.data_arr[i]
+            else:
+                popped_value = self.data_arr[self.n - 1]
+            
             self.data_arr[self.n - 1] = None
             self.n -= 1
             if self.n < self.capacity // 4:
@@ -142,7 +151,9 @@ if __name__ == "__main__":
     arr_lst = ArrayList()
     for i in range(1, 5+1):
         arr_lst.append(i)
+    print(arr_lst.pop(3))
+    print(arr_lst)
     while len(arr_lst) > 1:
         print(arr_lst.pop())
     print(arr_lst)
-    print(arr_lst.capacity)
+    # print(arr_lst.capacity)
