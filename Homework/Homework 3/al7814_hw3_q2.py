@@ -156,4 +156,4 @@ if __name__ == "__main__":
     while len(arr_lst) > 1:
         print(arr_lst.pop())
     print(arr_lst)
-    # print(arr_lst.capacity)
+    print(arr_lst.capacity)
