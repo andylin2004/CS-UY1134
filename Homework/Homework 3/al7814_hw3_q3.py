@@ -6,8 +6,12 @@ def find_duplicates(lst):
     
     return_arr = []
 
-    for i in num_found:
-        if i > 1:
+    for i in range(len(num_found)):
+        if num_found[i] > 1:
             return_arr.append(i)
     
     return return_arr
+
+if __name__ == "__main__":
+    lst = [2,4,4,1,2]
+    print(find_duplicates(lst))
