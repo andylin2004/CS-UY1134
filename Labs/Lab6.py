@@ -16,3 +16,12 @@ def product_evens(n):
         return n * product_evens(n-2)
 
 print(product_evens(8))
+
+#q4
+def is_palindrome(str, low, high):
+    if high - low <= 0:
+        return True
+    else:
+        return str[low] == str[high] and is_palindrome(str, low + 1, high - 1)
+
+print(is_palindrome("555", 0, 2))
