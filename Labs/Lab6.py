@@ -1,4 +1,7 @@
 #q1
+from asyncio import constants
+
+
 def sum_to(n):
     if n <= 1:
         return 1
@@ -63,3 +66,36 @@ def binary_search(lst, low, high, val):
         return binary_search(lst, mid + 1, high, val)
 
 print(binary_search([1,12,15,18,420], 0, 4, 18))
+
+#q6
+def vc_count(word, low, high):
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    vowelCount = 0
+    consonantsCount = 0
+    if high - low <= 1:
+        if high - low == 1:
+            if word[low] in vowels:
+                vowelCount += 1
+            else:
+                consonantsCount += 1
+        if word[high] in vowels:
+            vowelCount += 1
+        else:
+            consonantsCount += 1
+        return (vowelCount, consonantsCount)
+    else:
+        previous = vc_count(word, low + 1, high - 1)
+        vowelCount = previous[0]
+        consonantsCount = previous[1]
+        if word[low] in vowels:
+            vowelCount += 1
+        else:
+            consonantsCount += 1
+        if word[high] in vowels:
+            vowelCount += 1
+        else:
+            consonantsCount += 1
+        return (vowelCount, consonantsCount)
+
+word = "NYUTandonEngineering"
+print(vc_count(word, 0, len(word)-1))
