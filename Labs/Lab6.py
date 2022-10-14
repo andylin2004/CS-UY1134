@@ -17,6 +17,25 @@ def product_evens(n):
 
 print(product_evens(8))
 
+#q3
+def find_max(lst, low, high):
+    if high - low == 0:
+        return lst[0]
+    elif high - low == 1:
+        if lst[low] > lst[high]:
+            return lst[low]
+        else:
+            return lst[high]
+    prev = find_max(lst, low + 1, high - 1)
+    if prev > lst[low] and prev > lst[high]:
+        return prev
+    elif lst[low] > lst[high] and lst[low] > prev:
+        return lst[low]
+    else:
+        return lst[high]
+        
+print(find_max([13,9,17,29,3,4,2], 0, 5))
+
 #q4
 def is_palindrome(str, low, high):
     if high - low <= 0:
