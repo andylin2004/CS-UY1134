@@ -33,7 +33,7 @@ def find_max(lst, low, high):
         return lst[low]
     else:
         return lst[high]
-        
+
 print(find_max([13,9,17,29,3,4,2], 0, 5))
 
 #q4
@@ -44,3 +44,22 @@ def is_palindrome(str, low, high):
         return str[low] == str[high] and is_palindrome(str, low + 1, high - 1)
 
 print(is_palindrome("555", 0, 2))
+
+#q5
+def binary_search(lst, low, high, val):
+    mid = (low + high) // 2
+    if high - low <= 1:
+        if lst[high] == val:
+            return high
+        elif lst[low] == val:
+            return low
+        else:
+            return None
+    elif lst[mid] > val:
+        return binary_search(lst, low, mid, val)
+    elif lst[mid] == val:
+        return mid
+    else:
+        return binary_search(lst, mid + 1, high, val)
+
+print(binary_search([1,12,15,18,420], 0, 4, 18))
