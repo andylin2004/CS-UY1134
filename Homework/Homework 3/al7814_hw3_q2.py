@@ -121,12 +121,12 @@ class ArrayList:
             self.data_arr[index] = val
             self.n += 1
 
-    #part b and c
+    #part b and d
     def pop(self, index = None):
         if self.n == 0:
             raise IndexError("Pop called on empty list")
         else:
-            if index:
+            if index != None:
                 if index < 0 or index > self.n - 1:
                     raise IndexError("Invalid index")
                 else:
@@ -157,3 +157,8 @@ if __name__ == "__main__":
         print(arr_lst.pop())
     print(arr_lst)
     print(arr_lst.capacity)
+    arr_lst = ArrayList()
+    for i in range(1, 5+1):
+        arr_lst.append(i)
+    print(arr_lst.pop(0))
+    print(arr_lst.pop(1))
