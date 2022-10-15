@@ -1,4 +1,4 @@
-def removeAll(lst, item):
+def remove_all(lst, item):
     lookAheadRange = 0
     i = 0
     while i < len(lst):
