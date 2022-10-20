@@ -20,7 +20,18 @@ def print_oposite_triangle(n):
     print_decreasing_triangle_recursive(n)
     print_triangle(n)
 
+#part c
+
+def print_ruler(n):
+    if n > 1:
+        print_ruler(n-1)
+    print("-" * n)
+    if n > 1:
+        print_ruler(n-1)
+
 if __name__ == "__main__": 
     print_triangle(4)
     print()
     print_oposite_triangle(4)
+    print()
+    print_ruler(5)
