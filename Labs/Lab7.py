@@ -15,8 +15,24 @@ def split_parity(lst, low, high):
         elif lst[high] % 2 == 1:
             split_parity(lst,low,high-1)
 
+#q2
+
+def nested_sum(lst):
+    """
+    : lst type: list
+    : output type: int
+    """
+    total = 0
+    for i in lst:
+        if isinstance(i, list):
+            total += nested_sum(i)
+        elif isinstance(i, int):
+            total += i
+    return total
         
 if __name__ == "__main__": 
     lst = [4,-5,2,3,-1,-6,7,9,0]
     split_parity(lst, 0, len(lst) - 1)
     print(lst)
+    lst = [ [1, 2], 3, [4, [5, 6, [7], 8 ] ] ]
+    print(nested_sum(lst))
