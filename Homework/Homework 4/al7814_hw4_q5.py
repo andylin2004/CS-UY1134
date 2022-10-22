@@ -2,10 +2,10 @@
 
 def count_lowercase(s, low, high):
     total = 0
-    if 97 <= ord(s[low]) < 123:
-        total += 1
     if low != high:
         total += count_lowercase(s, low+1, high)
+    if 97 <= ord(s[low]) < 123:
+        total += 1
     return total
 
 #part b
