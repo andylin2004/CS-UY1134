@@ -1,24 +1,17 @@
 #part a
 
 def print_triangle(n):
-    print_triangle_recursive(1, n)
-
-def print_triangle_recursive(cur, max):
-    print("*" * cur)
-    if cur < max:
-        print_triangle_recursive(cur + 1, max)
-
+    if n > 1:
+        print_triangle(n - 1)
+    print("*" * n)
 
 #part b
 
-def print_decreasing_triangle_recursive(n):
+def print_opposite_triangles(n):
     print("*" * n)
     if n > 1:
-        print_decreasing_triangle_recursive(n - 1)
-
-def print_opposite_triangles(n):
-    print_decreasing_triangle_recursive(n)
-    print_triangle(n)
+        print_opposite_triangles(n - 1)
+    print("*" * n)
 
 #part c
 
@@ -32,6 +25,6 @@ def print_ruler(n):
 if __name__ == "__main__": 
     print_triangle(4)
     print()
-    print_opposite_triangle(4)
+    print_opposite_triangles(4)
     print()
     print_ruler(5)
