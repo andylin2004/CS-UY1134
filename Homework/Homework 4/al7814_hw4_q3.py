@@ -16,7 +16,7 @@ def print_decreasing_triangle_recursive(n):
     if n > 1:
         print_decreasing_triangle_recursive(n - 1)
 
-def print_opposite_triangle(n):
+def print_opposite_triangles(n):
     print_decreasing_triangle_recursive(n)
     print_triangle(n)
 
