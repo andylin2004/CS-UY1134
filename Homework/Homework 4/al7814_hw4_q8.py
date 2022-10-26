@@ -1,11 +1,12 @@
 def flat_list(nested_lst, low, high):
     return_lst = []
-    for i in nested_lst:
-        if isinstance(i, list):
-            for n in flat_list(i, 0, len(i)):
-                return_lst.append(n)
-        elif isinstance(i, int):
+    if low < high:
+        return_lst = flat_list(nested_lst, low, high-1)
+    if isinstance(nested_lst[high], list):
+        for i in flat_list(nested_lst[high], 0, len(nested_lst[high]) - 1):
             return_lst.append(i)
+    elif isinstance(nested_lst[high], int):
+        return_lst.append(nested_lst[high])
     return return_lst
         
 
