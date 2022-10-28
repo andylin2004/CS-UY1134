@@ -11,7 +11,13 @@ def count_lowercase(s, low, high):
 #part b
 
 def is_number_of_lowercase_even(s, low, high):
-    return count_lowercase(s, low, high) % 2 == 0
+    if low == high:
+        return True
+    else:
+        if 97 <= ord(s[low]) < 123:
+            return not is_number_of_lowercase_even(s, low+1, high)
+        else:
+            return is_number_of_lowercase_even(s, low+1, high)
 
 if __name__ == "__main__": 
     string = "kanYE"
