@@ -27,7 +27,11 @@ def eval_prefix(exp_str):
             s.push(s.pop() // s.pop())
     return s.top()
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
+    s = ArrayStack()
+    for i in [1, -14, 5, 6, -7, 9, 10, -5, -8]:
+        s.push(i)
+    print(stack_sum(s))
     print(eval_prefix("- + * 16 5 * 8 4 20"))
     print(eval_prefix("- * 3 4 10"))
     print(eval_prefix("+ / 10 2 * 5 5"))
