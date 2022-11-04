@@ -3,6 +3,7 @@ from ArrayQueue import *
 class MeanQueue:
     def __init__(self):
         self.data = ArrayQueue()
+        self.total = 0
     def __len__(self):
         '''Return the number of elements in the queue'''
     def is_empty(self):
@@ -15,5 +16,7 @@ class MeanQueue:
         ''' Return a reference to the first element of the queue without removing it. If the queue is empty, raise an exception '''
     def sum(self):
         ''' Returns the sum of all values in the queue'''
+        return self.total
     def mean(self):
         ''' Return the mean (average) value in the queue'''
+        return self.total / len(self.data)
