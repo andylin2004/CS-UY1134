@@ -35,6 +35,7 @@ def flatten_list(lst):
     : return type: None
     """
     for i in range(len(lst) - 1, -1, -1):
+        pass
         
 
 if __name__ == "__main__":
