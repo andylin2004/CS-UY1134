@@ -27,6 +27,16 @@ def eval_prefix(exp_str):
             s.push(s.pop() // s.pop())
     return s.top()
 
+#q3
+
+def flatten_list(lst):
+    """
+    : lst type: list
+    : return type: None
+    """
+    for i in range(len(lst) - 1, -1, -1):
+        
+
 if __name__ == "__main__":
     s = ArrayStack()
     for i in [1, -14, 5, 6, -7, 9, 10, -5, -8]:
