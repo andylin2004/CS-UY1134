@@ -29,3 +29,14 @@ class MaxStack:
             if popped[1] != None:
                 self.max_value = popped[1]
             return popped[0]
+
+if __name__ == "__main__": 
+    maxS = MaxStack()
+    maxS.push(3)
+    maxS.push(1)
+    maxS.push(6)
+    maxS.push(4)
+    print(maxS.max())
+    print(maxS.pop())
+    print(maxS.pop())
+    print(maxS.max())
