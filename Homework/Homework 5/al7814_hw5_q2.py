@@ -29,6 +29,9 @@ class MaxStack:
             if popped[1] != None:
                 self.max_value = popped[1]
             return popped[0]
+    
+    def max(self):
+        return self.max_value
 
 if __name__ == "__main__": 
     maxS = MaxStack()
