@@ -12,13 +12,20 @@ class MaxStack:
         return len(self.stack)
     
     def push(self, e):
-        self.stack.push(e)
+        if self.max_value < e:
+            self.stack.push((e, self.max_value))
+            self.max_value = e
+        else:
+            self.stack.push((e, None))
     
     def top(self):
-        return self.stack.top()
+        return self.stack.top()[0]
     
     def pop(self):
         if len(self.stack) == 0:
             raise Exception("Stack is empty")
         else:
-            return self.stack.pop()
+            popped = self.stack.pop()
+            if popped[1] != None:
+                self.max_value = popped[1]
+            return popped[0]
