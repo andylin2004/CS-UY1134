@@ -21,3 +21,17 @@ class MidStack:
         if len(self.stack) < len(self.deque):
             self.stack.push(self.deque.dequeue_first())
         self.deque.enqueue_first(e)
+    
+    def top(self):
+        if self.is_empty():
+            raise Exception("Empty stack")
+        else:
+            return self.deque.last()
+    
+    def pop(self):
+        if self.is_empty():
+            raise Exception("Empty stack")
+        else:
+            popped = self.deque.dequeue_last()
+            self.deque.enqueue_first(self.stack.pop())
+            return popped
