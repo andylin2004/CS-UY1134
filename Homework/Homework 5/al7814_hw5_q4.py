@@ -17,7 +17,7 @@ class Queue:
             return len(self.stack_1)
         else:
             return len(self.stack_2)
-            
+
     def enqueue(self, item):
         if self.stack_used == 2:
             self.stack_used = 1
@@ -30,7 +30,7 @@ class Queue:
             raise Exception("Queue is empty")
         if self.stack_used == 1:
             self.stack_used = 2
-            for _ in range(len(self.stack_1) - 1):
+            for _ in range(len(self.stack_1)):
                 self.stack_2.push(self.stack_1.pop())
         return self.stack_2.pop()
     
@@ -42,3 +42,16 @@ class Queue:
                 for _ in range(len(self.stack_1) - 1):
                     self.stack_2.push(self.stack_1.pop())
             return self.stack_2.top()
+
+if __name__ == "__main__": 
+    queue = Queue()
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    queue.enqueue(4)
+    queue.enqueue(5)
+    print(queue.dequeue())
+    print(queue.dequeue())
+    print(queue.dequeue())
+    print(queue.dequeue())
+    print(queue.dequeue())
