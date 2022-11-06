@@ -12,6 +12,12 @@ class Queue:
         else:
             return self.stack_2.is_empty()
 
+    def __len__(self):
+        if self.stack_used == 1:
+            return len(self.stack_1)
+        else:
+            return len(self.stack_2)
+            
     def enqueue(self, item):
         if self.stack_used == 2:
             self.stack_used = 1
