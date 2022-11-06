@@ -13,4 +13,11 @@ class MidStack:
         return len(self.stack) + len(self.deque)
     
     def push(self, e):
-        self.stack.push(e)
+        if len(self.stack) < len(self.deque):
+            self.stack.push(self.deque.dequeue_first())
+        self.deque.enqueue_last(e)
+    
+    def mid_push(self, e):
+        if len(self.stack) < len(self.deque):
+            self.stack.push(self.deque.dequeue_first())
+        self.deque.enqueue_first(e)
