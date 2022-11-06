@@ -11,3 +11,6 @@ class MidStack:
     
     def __len__(self):
         return len(self.stack) + len(self.deque)
+    
+    def push(self, e):
+        self.stack.push(e)
