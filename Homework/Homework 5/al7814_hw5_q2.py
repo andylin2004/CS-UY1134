@@ -31,7 +31,10 @@ class MaxStack:
             return popped[0]
     
     def max(self):
-        return self.max_value
+        if len(self.stack) == 0:
+            raise Exception("Stack is empty")
+        else:
+            return self.max_value
 
 if __name__ == "__main__": 
     maxS = MaxStack()
