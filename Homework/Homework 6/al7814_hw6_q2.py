@@ -27,6 +27,8 @@ class Integer:
                 self_cursor = self_cursor.prev
             if other_cursor.data is not None:
                 other_cursor = other_cursor.prev
+        if overflow > 0:
+            new_integer.linked_list.add_first(overflow)
         return new_integer
 
     def __repr__(self):
