@@ -5,9 +5,13 @@ class Integer:
         ''' Initializes an Integer object representing
         the value given in the string num_str'''
         self.linked_list = DoublyLinkedList()
+        not_zero = False
         if num_str is not None:
             for char in num_str:
-                self.linked_list.add_last(int(char))
+                if char != '0':
+                    not_zero = True
+                if not_zero:
+                    self.linked_list.add_last(int(char))
 
     def __add__(self, other):
         ''' Creates and returns an Integer object that represent the sum of self and other, also of type Integer'''
@@ -42,3 +46,7 @@ if __name__ == "__main__":
     print(integer)
     integer3 = integer + integer2
     print(integer3)
+    integer = Integer("007")
+    integer2 = Integer("20")
+    print(integer + integer2)
+    print(integer)
