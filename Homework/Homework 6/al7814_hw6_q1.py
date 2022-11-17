@@ -14,7 +14,7 @@ class LinkedQueue:
         return self.queue.delete_first()
     
     def first(self):
-        return self.queue.header
+        return self.queue.first()
 
     def is_empty(self):
         return self.queue.is_empty()
