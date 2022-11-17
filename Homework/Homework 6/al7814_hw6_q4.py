@@ -6,6 +6,15 @@ def copy_linked_list(lnk_lst):
         new_list.add_last(i)
     return new_list
 
+def deep_copy_linked_list(lnk_lst):
+    new_list = DoublyLinkedList()
+    for i in lnk_lst:
+        if isinstance(i, DoublyLinkedList):
+            new_list.add_last(deep_copy_linked_list(i))
+        else:
+            new_list.add_last(i)
+    return new_list
+
 if __name__ == "__main__":
     lnk_lst1 = DoublyLinkedList()
     elem1 = DoublyLinkedList()
