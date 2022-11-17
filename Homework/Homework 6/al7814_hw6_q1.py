@@ -7,17 +7,23 @@ class LinkedQueue:
     def __len__(self):
         return len(self.queue)
     
+    def is_empty(self):
+        return self.queue.is_empty()
+    
     def enqueue(self, value):
         self.queue.add_last(value)
     
     def dequeue(self):
+        if self.is_empty():
+            raise Exception("Queue is empty")
         return self.queue.delete_first()
     
     def first(self):
+        if self.is_empty():
+            raise Exception("Queue is empty")
         return self.queue.header.next.data
 
-    def is_empty(self):
-        return self.queue.is_empty()
+    
 
 if __name__ == "__main__": 
     lq = LinkedQueue()
