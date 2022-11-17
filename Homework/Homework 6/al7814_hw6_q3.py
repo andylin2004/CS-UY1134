@@ -32,14 +32,23 @@ class CompactString:
 
     def __lt__(self, other):
         ''' returns True if”f self is lexicographically less than other, also of type CompactString'''
+        return len(self.linked_list) < len(other.linked_list)
+
     def __le__(self, other):
         ''' returns True if”f self is lexicographically less than or equal to other, also of type CompactString'''
+        return len(self.linked_list) <= len(other.linked_list)
+
     def __gt__(self, other):
         ''' returns True if”f self is lexicographically greater than other, also of type CompactString'''
+        return len(self.linked_list) > len(other.linked_list)
+
     def __ge__(self, other):
         ''' returns True if”f self is lexicographically greater than or equal to other, also of type CompactString'''
+        return len(self.linked_list) >= len(other.linked_list)
+
     def __repr__(self):
         ''' Creates and returns the string representation (of type str) of self'''
+        return "".join([str(x[0]) * x[1] for x in self.linked_list])
 
 if __name__ == "__main__": 
     compact_string = CompactString("aaaaabbbaaac")
@@ -47,3 +56,5 @@ if __name__ == "__main__":
     compact_2 = CompactString("aaaaaaacccaaaa")
     compact_sum = compact_2 + compact_string
     print(compact_sum.linked_list)
+    print(compact_string < compact_2)
+    print(compact_string)
