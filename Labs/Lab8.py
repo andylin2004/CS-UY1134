@@ -34,8 +34,18 @@ def flatten_list(lst):
     : lst type: list
     : return type: None
     """
+    stack = ArrayStack()
     for i in range(len(lst) - 1, -1, -1):
-        pass
+        stack.push(lst[i])
+    while len(lst) > 0:
+        lst.pop()
+    while not stack.is_empty():
+        if isinstance(stack.top(), list):
+            popped = stack.pop()
+            for i in range(len(popped) - 1, -1, -1):
+                stack.push(popped[i])
+        else:
+            lst.append(stack.pop())
         
 
 if __name__ == "__main__":
@@ -49,4 +59,6 @@ if __name__ == "__main__":
     print(eval_prefix("+ 8 / - 10 2 4"))
     print(eval_prefix("+ * 6 3 * 8 4"))
     print(eval_prefix("+ - * 8 2 + 3 6 4 "))
-    
+    lst = [ [[[0]]], [1, 2], 3, [4, [5, 6, [7]], 8], 9]
+    flatten_list(lst)
+    print(lst)
