@@ -83,5 +83,22 @@ class DoublyLinkedList:
             else:
                 cursor = cursor.next
 
+    #q2 lab10
+
+    def __getitem__(self, i):
+        if i < 0 or i > self.size - 1:
+            if i < self.size - 1 - i:
+                cursor = self.header.next
+                for _ in range(i):
+                    cursor = cursor.next
+                return cursor.data
+            else:
+                cursor = self.trailer.prev
+                for _ in range(self.size - 1 - i):
+                    cursor = cursor.prev
+                return cursor.data
+        else:
+            raise Exception()
+
 
 
