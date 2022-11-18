@@ -67,7 +67,11 @@ class MidStack:
         if self.is_empty():
             raise Exception()
         else:
+            if len(self) == 1:
+                self.mid = None
+            elif len(self) % 2 == 1:
+                self.mid = self.mid.prev
             return self.data.delete_first()
-            
+
     def mid_push(self, e):
         ''' Adds an element, e, to the middle of the stack.'''
