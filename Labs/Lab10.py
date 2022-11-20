@@ -74,7 +74,7 @@ class MidStack:
             if len(self) == 1:
                 self.mid = None
             elif len(self) % 2 == 1:
-                self.mid = self.mid.prev
+                self.mid = self.mid.next
             return self.data.delete_first()
 
     def mid_push(self, e):
@@ -83,7 +83,7 @@ class MidStack:
         if self.is_empty():
             raise Exception()
         else:
-            self.mid = self.data.add_after(self.mid, e)
+            self.mid = self.data.add_before(self.mid, e)
             
 if __name__ == "__main__": 
     mids = MidStack ()
