@@ -50,3 +50,9 @@ if __name__ == "__main__":
     print(is_full(n_apex))
     n12.right = None
     print(is_full(n_apex))
+    for i in bt.preorder_with_stack():
+        print(i, end=' ')
+    print()
+    n12.right = n2
+    for i in bt.preorder_with_stack():
+        print(i, end=' ')
