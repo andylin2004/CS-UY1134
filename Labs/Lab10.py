@@ -52,6 +52,10 @@ class MidStack:
     def push(self, e):
         ''' Adds an element, e, to the top of the stack. '''
         self.data.add_first(e)
+        if len(self) == 1:
+            self.mid = self.data.header.next
+        elif len(self) % 2 == 1:
+            self.mid = self.mid.prev
 
     def top(self):
         ''' Returns the element at the top of the stack.
@@ -74,4 +78,36 @@ class MidStack:
             return self.data.delete_first()
 
     def mid_push(self, e):
-        ''' Adds an element, e, to the middle of the stack.'''
+        ''' Adds an element, e, to the middle of the stack.
+        An exception is raised if the stack is empty. '''
+        if self.is_empty():
+            raise Exception()
+        else:
+            self.mid = self.data.add_after(self.mid, e)
+            
+if __name__ == "__main__": 
+    mids = MidStack ()
+    mids.push (2)
+    mids.push (4)
+    mids.push (6)
+    mids.push (8)
+    mids.mid_push(10)
+    print(mids.pop())
+    print(mids.pop())
+    print(mids.pop())
+    print(mids.pop()) 
+    print(mids.pop())
+    print()
+    mids = MidStack ()
+    mids.push(2)
+    mids.push(4)
+    mids.push(6)
+    mids.push(8)
+    mids.push(10)
+    mids.mid_push(12)
+    print(mids.pop())
+    print(mids.pop())
+    print(mids.pop())
+    print(mids.pop())
+    print(mids.pop())
+    print(mids.pop())
