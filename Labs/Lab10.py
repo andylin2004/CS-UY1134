@@ -99,6 +99,18 @@ def reverse_dll_by_data(dll):
         right_node = right_node.prev
         left_slot += 1
         right_slot -= 1
+
+def reverse_dll_by_node(dll):
+    ''' Reverses the linked list '''
+    length = len(dll)
+    dll.header.next.prev = dll.trailer
+    dll.trailer.prev.next = dll.header
+    actual_data = dll.header.next
+    (dll.header.next, dll.trailer.prev) = (dll.trailer.prev, dll.header.next)
+    for _ in range(length):
+        next = actual_data.next
+        (actual_data.next, actual_data.prev) = (actual_data.prev, actual_data.next)
+        actual_data = next
             
 if __name__ == "__main__": 
     mids = MidStack ()
@@ -132,4 +144,6 @@ if __name__ == "__main__":
         dll.add_last(i)
     print(dll)
     reverse_dll_by_data(dll)
+    print(dll)
+    reverse_dll_by_node(dll)
     print(dll)
