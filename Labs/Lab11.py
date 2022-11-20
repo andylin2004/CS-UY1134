@@ -19,6 +19,16 @@ def bt_contains(root, val):
     else:
         return root.data == val or bt_contains(root.left, val) or bt_contains(root.right, val)
 
+def is_full(root):
+    ''' Returns True if the Binary Tree is full and false
+    if not '''
+    if root.left is None and root.right is None:
+        return True
+    elif (root.left is None and root.right is not None) or (root.left is not None and root.right is None):
+        return False
+    else:
+        return is_full(root.left) == is_full(root.right)
+
 if __name__ == "__main__": 
     n1 = LinkedBinaryTree.Node(1)
     n2 = LinkedBinaryTree.Node(2)
@@ -31,3 +41,6 @@ if __name__ == "__main__":
     print(bt_contains(n_apex, 0))
     print(bt_contains(n_apex, 1))
     print(bt_even_sum(n_apex))
+    print(is_full(n_apex))
+    n12.right = None
+    print(is_full(n_apex))
