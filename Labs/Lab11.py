@@ -1,5 +1,7 @@
 from LinkedBinaryTree import *
 
+# q1
+
 def bt_even_sum(root):
     ''' Returns the sum of all even integers in the binary
     tree'''
@@ -11,6 +13,8 @@ def bt_even_sum(root):
             total += root.data
         return total + bt_even_sum(root.left) + bt_even_sum(root.right)
 
+#q2
+
 def bt_contains(root, val):
     ''' Returns True if val exists in the binary tree and
     false if not'''
@@ -18,6 +22,8 @@ def bt_contains(root, val):
         return False
     else:
         return root.data == val or bt_contains(root.left, val) or bt_contains(root.right, val)
+
+#q3
 
 def is_full(root):
     ''' Returns True if the Binary Tree is full and false
