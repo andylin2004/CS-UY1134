@@ -1,4 +1,5 @@
 from ArrayQueue import ArrayQueue
+from ArrayStack import *
 
 class LinkedBinaryTree:
 
@@ -119,4 +120,16 @@ class LinkedBinaryTree:
         for node in self.breadth_first():
             yield node.data
 
+    def preorder_with_stack(self):
+        ''' Returns a generator function that iterates through
+        the tree using the preorder traversal '''
+        stack = ArrayStack()
+        stack.push(self.root)
+        while not stack.is_empty():
+            root = stack.pop()
+            if root.right is not None:
+                stack.push(root.right)
+            if root.left is not None:
+                stack.push(root.left)
+            yield root.data
 
