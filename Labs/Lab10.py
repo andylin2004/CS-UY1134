@@ -84,6 +84,21 @@ class MidStack:
             raise Exception()
         else:
             self.mid = self.data.add_before(self.mid, e)
+
+# q4
+
+def reverse_dll_by_data(dll):
+    ''' Reverses the linked list '''
+    left_node = dll.header.next
+    right_node = dll.trailer.prev
+    left_slot = 0
+    right_slot = len(dll) - 1
+    while left_slot < right_slot:
+        (left_node.data, right_node.data) = (right_node.data, left_node.data)
+        left_node = left_node.next
+        right_node = right_node.prev
+        left_slot += 1
+        right_slot -= 1
             
 if __name__ == "__main__": 
     mids = MidStack ()
@@ -111,3 +126,10 @@ if __name__ == "__main__":
     print(mids.pop())
     print(mids.pop())
     print(mids.pop())
+
+    dll = DoublyLinkedList()
+    for i in range(7):
+        dll.add_last(i)
+    print(dll)
+    reverse_dll_by_data(dll)
+    print(dll)
