@@ -169,6 +169,31 @@ class QueueStack_fastpush:
         self.first_in_front = True
         return self.data.first()
 
+class QueueStack_fastpoptop:
+    def __init__(self):
+        self.data = ArrayQueue()
+        self.first_in_front = False
+
+    def __len__(self):
+        return len(self.data)
+
+    def is_empty(self):
+        return len(self) == 0
+
+    def push(self, e):
+        ''' Add element e to the top of the stack '''
+        self.data.enqueue(e)
+        for _ in range(len(self.data) - 1):
+            self.data.enqueue(self.data.dequeue())
+
+    def pop(self):
+        ''' Remove and return the top element from the stack. If the stack is empty, raise an exception'''
+        return self.data.dequeue()
+
+    def top(self):
+        ''' Return a reference to the top element of the stack without removing it. If the stack is empty, raise an exception '''
+        return self.data.first()
+
 if __name__ == "__main__": 
     lst = [ [[[0]]], [1, 2], 3, [4, [5, 6, [7]], 8], 9]
     new_lst = flatten_list_by_depth(lst)
@@ -183,8 +208,28 @@ if __name__ == "__main__":
     qs.push(7)
     print(qs.top())
     print(qs.pop())
+    qs.push(8)
+    qs.push(9)
+    print(qs.top())
     print(qs.pop())
     print(qs.pop())
     print(qs.pop())
     print(qs.pop())
     print(qs.pop())
+
+    print()
+
+    qs2 = QueueStack_fastpoptop()
+    qs2.push(1)
+    qs2.push(2)
+    qs2.push(3)
+    qs2.push(4)
+    qs2.push(5)
+    qs2.push(6)
+    qs2.push(7)
+    print(qs2.data.first())
+    print(qs2.top())
+    print(qs2.pop())
+    print(qs2.pop())
+    print(qs2.pop())
+    print(qs2.pop())
