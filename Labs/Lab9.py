@@ -140,8 +140,7 @@ class ArrayDeque:
 class QueueStack_fastpush:
     def __init__(self):
         self.data = ArrayQueue()
-        self.proper_order = True
-        self.added_in = 0
+        self.first_in_front = False
 
     def __len__(self):
         return len(self.data)
@@ -151,29 +150,41 @@ class QueueStack_fastpush:
 
     def push(self, e):
         ''' Add element e to the top of the stack '''
-        self.proper_order = False
+        self.first_in_front = False
         self.data.enqueue(e)
-        self.added_in += 1
 
     def pop(self):
         ''' Remove and return the top element from the stack. If the stack is empty, raise an exception'''
-        if not self.proper_order:
-            for _ in range(len(self.data) - self.added_in):
+        if not self.first_in_front:
+            for _ in range(len(self.data) - 1):
                 self.data.enqueue(self.data.dequeue())
-            self.proper_order = True
-            self.added_in = 0
+        self.first_in_front = False
         return self.data.dequeue()
 
     def top(self):
         ''' Return a reference to the top element of the stack without removing it. If the stack is empty, raise an exception '''
-        if not self.proper_order:
-            for _ in range(len(self.data) - self.added_in):
+        if not self.first_in_front:
+            for _ in range(len(self.data) - 1):
                 self.data.enqueue(self.data.dequeue())
-            self.proper_order = True
-            self.added_in = 0
+        self.first_in_front = True
         return self.data.first()
 
 if __name__ == "__main__": 
     lst = [ [[[0]]], [1, 2], 3, [4, [5, 6, [7]], 8], 9]
     new_lst = flatten_list_by_depth(lst)
     print(new_lst)
+    qs = QueueStack_fastpush()
+    qs.push(1)
+    qs.push(2)
+    qs.push(3)
+    qs.push(4)
+    qs.push(5)
+    qs.push(6)
+    qs.push(7)
+    print(qs.top())
+    print(qs.pop())
+    print(qs.pop())
+    print(qs.pop())
+    print(qs.pop())
+    print(qs.pop())
+    print(qs.pop())
