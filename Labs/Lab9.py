@@ -85,7 +85,6 @@ class ArrayDeque:
         self.capacity = ArrayQueue.INITIAL_CAPACITY
         self.n = 0
         self.front_ind = None
-        self.end_ind = None
 
     def __len__(self):
         return self.n
@@ -93,7 +92,7 @@ class ArrayDeque:
     def is_empty(self):
         return (len(self) == 0)
 
-    def enqueue_last(self, elem):
+    def enqueue(self, elem):
         if (self.n == self.capacity):
             self.resize(2 * self.capacity)
         if (self.is_empty()):
@@ -105,7 +104,7 @@ class ArrayDeque:
             self.data_arr[back_ind] = elem
             self.n += 1
 
-    def dequeue_first(self):
+    def dequeue(self):
         if (self.is_empty()):
             raise Exception("Queue is empty")
         value = self.data_arr[self.front_ind]
@@ -127,7 +126,6 @@ class ArrayDeque:
     def resize(self, new_cap):
         new_data = make_array(new_cap)
         old_ind = self.front_ind
-        
         for new_ind in range(self.n):
             new_data[new_ind] = self.data_arr[old_ind]
             old_ind = (old_ind + 1) % self.capacity
