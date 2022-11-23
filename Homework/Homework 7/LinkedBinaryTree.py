@@ -133,5 +133,9 @@ class LinkedBinaryTree:
         
         return [x for x in leaf_finder(self.root)]
 
+    #q4
+
+    
+
 
 
