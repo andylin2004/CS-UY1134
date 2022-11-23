@@ -15,3 +15,5 @@ def min_and_max(bin_tree):
                 grand_min = min(left_minmax[0], right_minmax[0])
                 grand_max = max(left_minmax[1], right_minmax[1])
                 return (grand_min, grand_max)
+
+    return subtree_min_and_max(bin_tree.root)
