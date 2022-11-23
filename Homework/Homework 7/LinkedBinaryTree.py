@@ -119,4 +119,19 @@ class LinkedBinaryTree:
         for node in self.breadth_first():
             yield node.data
 
+    #q2
+    
+    def leaves_list(self):
+        def leaf_finder(root):
+            if root.left is None and root.right is None:
+                yield root.data
+            else:
+                if root.left is not None:
+                    yield from leaf_finder(root.left)
+                if root.right is not None:
+                    yield from leaf_finder(root.right)
+        
+        return [x for x in leaf_finder(self.root)]
+
+
 
