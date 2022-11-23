@@ -11,3 +11,5 @@ def is_height_balanced(bin_tree):
                 return (max(left_results[0], right_results[0]), abs(left_results[0] - right_results[0]) <= 1)
             else:
                 return (0, False)
+    
+    return subtree_height_measure(bin_tree.root)[1]
