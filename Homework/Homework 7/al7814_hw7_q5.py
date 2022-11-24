@@ -23,15 +23,23 @@ def create_expression_tree(prefix_exp_str):
 
     return LinkedBinaryTree(create_expression_tree_helper(0)[0])
 
+def prefix_to_postfix(prefix_exp_str):
+    tree = create_expression_tree(prefix_exp_str)
+    return " ".join([str(x.data) for x in tree.postorder()])
+
 if __name__ == "__main__": 
     exp_tree = create_expression_tree('* 2 + - 15 6 4')
     for i in exp_tree.preorder():
         print(i.data, end=' ')
     print()
+    print(prefix_to_postfix('* 2 + - 15 6 4'))
     exp_tree = create_expression_tree('- * 3 4 10')
     for i in exp_tree.preorder():
         print(i.data, end=' ')
     print()
+    print(prefix_to_postfix('- * 3 4 10'))
     exp_tree = create_expression_tree('+ * 6 3 * 8 4')
     for i in exp_tree.preorder():
         print(i.data, end=' ')
+    print()
+    print(prefix_to_postfix('+ * 6 3 * 8 4'))
