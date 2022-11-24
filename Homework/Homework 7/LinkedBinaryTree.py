@@ -167,5 +167,17 @@ class LinkedBinaryTree:
                         node = node.parent
                         reverse = True
 
+if __name__ == "__main__": 
+    n1 = LinkedBinaryTree.Node(5)
+    n2 = LinkedBinaryTree.Node(1)
+    n3 = LinkedBinaryTree.Node(9, n1, n2)
+    n4 = LinkedBinaryTree.Node(2, n3)
+    n5 = LinkedBinaryTree.Node(8)
+    n6 = LinkedBinaryTree.Node(4)
+    n7 = LinkedBinaryTree.Node(7, n5, n6)
+    n8 = LinkedBinaryTree.Node(3, n4, n7)
+    lb = LinkedBinaryTree(n8)
+    for i in lb.iterative_inorder():
+        print(i)
 
 
