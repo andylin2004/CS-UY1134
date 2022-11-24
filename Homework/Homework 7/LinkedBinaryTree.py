@@ -142,7 +142,7 @@ class LinkedBinaryTree:
         prev = None
         if node is None:
             raise Exception()
-        while counter < self.count_nodes() - 1:
+        while counter < self.count_nodes():
             if reverse:
                 while node.right is None or node.right == prev:
                     node = node.parent
