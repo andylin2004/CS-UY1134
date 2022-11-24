@@ -146,6 +146,7 @@ class LinkedBinaryTree:
             if reverse:
                 while node.right is None or node.right == prev:
                     node = node.parent
+                    prev = node
                     yield node.data
                     counter += 1
                 node = node.right
@@ -165,10 +166,11 @@ class LinkedBinaryTree:
                             node = node.parent
                             reverse = True
                     else:
-                        node = node.parent
                         prev = node
-                        yield node.data
-                        counter += 1
+                        node = node.parent
+                        if node.right != prev:
+                            yield node.data
+                            counter += 1
                         reverse = True
                 elif node.left is not None:
                     node = node.left
