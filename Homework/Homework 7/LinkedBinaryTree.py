@@ -135,7 +135,37 @@ class LinkedBinaryTree:
 
     #q4
 
-    
+    def iterative_inorder(self):
+        node = self.root
+        counter = 0
+        reverse = False
+        if node is None:
+            raise Exception()
+        while counter < len(self):
+            if reverse:
+                while node.right is None:
+                    node = node.parent
+                node = node.right
+                reverse = False
+            else:
+                if node.left is None and node.right is None:
+                    yield node.data
+                    node = node.parent
+                    yield node.data
+                    if node.right is not None:
+                        node = node.right
+                    else:
+                        node = node.parent
+                        reverse = True
+                elif node.left is not None:
+                    node = node.left
+                else:
+                    yield node.data
+                    if node.right is not None:
+                        node = node.right
+                    else:
+                        node = node.parent
+                        reverse = True
 
 
 
