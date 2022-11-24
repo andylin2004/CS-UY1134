@@ -142,19 +142,23 @@ class LinkedBinaryTree:
         prev = None
         if node is None:
             raise Exception()
-        while counter < len(self):
+        while counter < self.count_nodes() - 1:
             if reverse:
                 while node.right is None or node.right == prev:
                     node = node.parent
+                    yield node.data
+                    counter += 1
                 node = node.right
                 reverse = False
             else:
                 if node.left is None and node.right is None:
                     yield node.data
+                    counter += 1
                     prev = node
                     node = node.parent
                     if node.left == prev:
                         yield node.data
+                        counter += 1
                         if node.right is not None:
                             node = node.right
                         else:
@@ -162,11 +166,15 @@ class LinkedBinaryTree:
                             reverse = True
                     else:
                         node = node.parent
+                        prev = node
+                        yield node.data
+                        counter += 1
                         reverse = True
                 elif node.left is not None:
                     node = node.left
                 else:
                     yield node.data
+                    counter += 1
                     if node.right is not None and node.right != prev:
                         node = node.right
                         prev = node
@@ -185,11 +193,11 @@ if __name__ == "__main__":
     n7 = LinkedBinaryTree.Node(7, n5, n6)
     n8 = LinkedBinaryTree.Node(3, n4, n7)
     lb = LinkedBinaryTree(n8)
-    # for i in lb.iterative_inorder():
-    #     print(i)
-    e = lb.iterative_inorder()
-    print(next(e))
-    print(next(e))
-    print(next(e))
-    print(next(e))
-    print(next(e))
+    for i in lb.iterative_inorder():
+        print(i)
+    # e = lb.iterative_inorder()
+    # print(next(e))
+    # print(next(e))
+    # print(next(e))
+    # print(next(e))
+    # print(next(e))
