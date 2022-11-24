@@ -144,20 +144,23 @@ class LinkedBinaryTree:
             raise Exception()
         while counter < len(self):
             if reverse:
-                while node.right is None and node.right == prev:
+                while node.right is None or node.right == prev:
                     node = node.parent
                 node = node.right
                 reverse = False
             else:
                 if node.left is None and node.right is None:
                     yield node.data
+                    prev = node
                     node = node.parent
-                    yield node.data
-                    if node.right is not None and node.right != prev:
-                        node = node.right
-                        prev = node
+                    if node.left == prev:
+                        yield node.data
+                        if node.right is not None:
+                            node = node.right
+                        else:
+                            node = node.parent
+                            reverse = True
                     else:
-                        prev = node
                         node = node.parent
                         reverse = True
                 elif node.left is not None:
