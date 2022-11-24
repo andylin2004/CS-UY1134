@@ -139,11 +139,12 @@ class LinkedBinaryTree:
         node = self.root
         counter = 0
         reverse = False
+        prev = None
         if node is None:
             raise Exception()
         while counter < len(self):
             if reverse:
-                while node.right is None:
+                while node.right is None and node.right == prev:
                     node = node.parent
                 node = node.right
                 reverse = False
@@ -152,18 +153,22 @@ class LinkedBinaryTree:
                     yield node.data
                     node = node.parent
                     yield node.data
-                    if node.right is not None:
+                    if node.right is not None and node.right != prev:
                         node = node.right
+                        prev = node
                     else:
+                        prev = node
                         node = node.parent
                         reverse = True
                 elif node.left is not None:
                     node = node.left
                 else:
                     yield node.data
-                    if node.right is not None:
+                    if node.right is not None and node.right != prev:
                         node = node.right
+                        prev = node
                     else:
+                        prev = node
                         node = node.parent
                         reverse = True
 
@@ -177,7 +182,11 @@ if __name__ == "__main__":
     n7 = LinkedBinaryTree.Node(7, n5, n6)
     n8 = LinkedBinaryTree.Node(3, n4, n7)
     lb = LinkedBinaryTree(n8)
-    for i in lb.iterative_inorder():
-        print(i)
-
-
+    # for i in lb.iterative_inorder():
+    #     print(i)
+    e = lb.iterative_inorder()
+    print(next(e))
+    print(next(e))
+    print(next(e))
+    print(next(e))
+    print(next(e))
