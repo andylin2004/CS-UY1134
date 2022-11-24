@@ -170,7 +170,7 @@ class LinkedBinaryTree:
                     else:
                         prev = node
                         node = node.parent
-                        if node.right != prev:
+                        if node is not None and node.right != prev:
                             yield node.data
                             counter += 1
                         reverse = True
@@ -201,6 +201,23 @@ if __name__ == "__main__":
     lb = LinkedBinaryTree(n8)
     for i in lb.iterative_inorder():
         print(i)
+    print()
+    n0 = LinkedBinaryTree.Node(1)
+    l0 = LinkedBinaryTree.Node(11)
+    n1 = LinkedBinaryTree.Node(2, l0, n0)
+    l1 = LinkedBinaryTree.Node(12)
+    n2 = LinkedBinaryTree.Node(3, l1, n1)
+    l2 = LinkedBinaryTree.Node(13)
+    n3 = LinkedBinaryTree.Node(4, l2, n2)
+    lb = LinkedBinaryTree(n3)
+    for i in lb.inorder():
+        print(i.data)
+    print()
+    for i in lb.iterative_inorder():
+        print(i)
+    
+    
+
     # e = lb.iterative_inorder()
     # print(next(e))
     # print(next(e))
