@@ -162,8 +162,10 @@ class LinkedBinaryTree:
                         counter += 1
                         if node.right is not None:
                             node = node.right
-                        else:
+                        else: 
                             node = node.parent
+                            yield node.data
+                            counter += 1
                             reverse = True
                     else:
                         prev = node
@@ -186,10 +188,12 @@ class LinkedBinaryTree:
                         reverse = True
 
 if __name__ == "__main__": 
+    n0 = LinkedBinaryTree.Node(49)
+    # n1 = LinkedBinaryTree.Node(5, n0)
     n1 = LinkedBinaryTree.Node(5)
     n2 = LinkedBinaryTree.Node(1)
     n3 = LinkedBinaryTree.Node(9, n1, n2)
-    n4 = LinkedBinaryTree.Node(2, n3)
+    n4 = LinkedBinaryTree.Node(2, None, n3)
     n5 = LinkedBinaryTree.Node(8)
     n6 = LinkedBinaryTree.Node(4)
     n7 = LinkedBinaryTree.Node(7, n5, n6)
