@@ -144,7 +144,7 @@ class LinkedBinaryTree:
             raise Exception()
         while counter < self.count_nodes():
             if reverse:
-                while node.right is None or node.right == prev:
+                while node.parent is not None and node.right is None or node.right == prev:
                     node = node.parent
                     prev = node
                     yield node.data
@@ -199,6 +199,9 @@ if __name__ == "__main__":
     n7 = LinkedBinaryTree.Node(7, n5, n6)
     n8 = LinkedBinaryTree.Node(3, n4, n7)
     lb = LinkedBinaryTree(n8)
+    for i in lb.inorder():
+        print(i.data)
+    print()
     for i in lb.iterative_inorder():
         print(i)
     print()
@@ -215,8 +218,28 @@ if __name__ == "__main__":
     print()
     for i in lb.iterative_inorder():
         print(i)
-    
-    
+    print()
+    n0 = LinkedBinaryTree.Node(1)
+    n1 = LinkedBinaryTree.Node(2, n0)
+    n2 = LinkedBinaryTree.Node(3, n1)
+    n3 = LinkedBinaryTree.Node(4, n2)
+    lb = LinkedBinaryTree(n3)
+    for i in lb.inorder():
+        print(i.data)
+    print()
+    for i in lb.iterative_inorder():
+        print(i)
+    print()
+    n0 = LinkedBinaryTree.Node(1)
+    n1 = LinkedBinaryTree.Node(2, None, n0)
+    n2 = LinkedBinaryTree.Node(3, None, n1)
+    n3 = LinkedBinaryTree.Node(4, None, n2)
+    lb = LinkedBinaryTree(n3)
+    for i in lb.inorder():
+        print(i.data)
+    print()
+    for i in lb.iterative_inorder():
+        print(i)
 
     # e = lb.iterative_inorder()
     # print(next(e))
