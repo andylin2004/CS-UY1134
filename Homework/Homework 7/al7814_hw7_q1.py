@@ -1,4 +1,4 @@
-from math import min, max
+from LinkedBinaryTree import *
 
 def min_and_max(bin_tree):
     def subtree_min_and_max(root):
@@ -23,3 +23,13 @@ def min_and_max(bin_tree):
                 return (grand_min, grand_max)
 
     return subtree_min_and_max(bin_tree.root)
+
+if __name__ == "__main__": 
+    a = LinkedBinaryTree.Node(5)
+    b = LinkedBinaryTree.Node(4)
+    c = LinkedBinaryTree.Node(6, a, b)
+    d = LinkedBinaryTree.Node(8)
+    e = LinkedBinaryTree.Node(10, None, d)
+    f = LinkedBinaryTree.Node(12, e, c)
+    bin_tree = LinkedBinaryTree(f)
+    print(min_and_max(bin_tree))
