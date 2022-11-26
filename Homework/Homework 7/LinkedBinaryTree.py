@@ -240,6 +240,19 @@ if __name__ == "__main__":
     print()
     for i in lb.iterative_inorder():
         print(i)
+    print()
+    a = LinkedBinaryTree.Node(5)
+    b = LinkedBinaryTree.Node(4)
+    c = LinkedBinaryTree.Node(6, a, b)
+    d = LinkedBinaryTree.Node(8)
+    e = LinkedBinaryTree.Node(10, None, d)
+    f = LinkedBinaryTree.Node(12, e, c)
+    bin_tree = LinkedBinaryTree(f)
+    for i in bin_tree.inorder():
+        print(i.data)
+    print()
+    for i in bin_tree.iterative_inorder():
+        print(i)
 
     # e = lb.iterative_inorder()
     # print(next(e))
