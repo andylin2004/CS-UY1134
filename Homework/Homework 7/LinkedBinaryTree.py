@@ -253,6 +253,7 @@ if __name__ == "__main__":
     print()
     for i in bin_tree.iterative_inorder():
         print(i)
+    print(bin_tree.leaves_list())
 
     # e = lb.iterative_inorder()
     # print(next(e))
