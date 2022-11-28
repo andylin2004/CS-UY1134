@@ -22,7 +22,11 @@ def min_and_max(bin_tree):
                 grand_max = max(left_minmax[1], right_minmax[1], root.data)
                 return (grand_min, grand_max)
 
-    return subtree_min_and_max(bin_tree.root)
+    result = subtree_min_and_max(bin_tree.root)
+    if result is None:
+        raise Exception("Empty tree")
+    else:
+        return result
 
 if __name__ == "__main__": 
     a = LinkedBinaryTree.Node(5)
