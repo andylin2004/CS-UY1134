@@ -131,7 +131,10 @@ class LinkedBinaryTree:
                 if root.right is not None:
                     yield from leaf_finder(root.right)
         
-        return [x for x in leaf_finder(self.root)]
+        if self.root is None:
+            return []
+        else:
+            return [x for x in leaf_finder(self.root)]
 
     #q4
 
