@@ -43,3 +43,28 @@ def compare_BST(bst1, bst2):
             if bst2.find_node(i.key).item.value != i.value:
                 return False
         return True
+
+# q4
+
+def is_BST(root):
+    def is_BST_helper(root):
+        ''' Returns a tuple (min, max, bool)'''
+        if root is None:
+            return None
+        else:
+            min_val = root.data
+            max_val = root.data
+            correct_ordering = True
+            left_result = is_BST_helper(root.left)
+            right_result = is_BST_helper(root.right)
+            if left_result is not None:
+                min_val = min(left_result[0], min_val)
+                max_val = max(left_result[1], max_val)
+                correct_ordering = root.left.data < root.data
+            if right_result is not None:
+                min_val = min(right_result[0], min_val)
+                max_val = max(right_result[1], max_val)
+                correct_ordering = correct_ordering and root.data < root.right.data
+            return (min_val, max_val, correct_ordering)
+
+    return is_BST_helper(root)[2]
