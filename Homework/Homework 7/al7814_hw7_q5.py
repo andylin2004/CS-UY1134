@@ -21,13 +21,20 @@ def create_expression_tree(prefix_exp_str):
             start_pos = subexp_result[1]
         return (node, start_pos)
 
-    return LinkedBinaryTree(create_expression_tree_helper(0)[0])
+    if len(tokens) > 0:
+        return LinkedBinaryTree(create_expression_tree_helper(0)[0])
+    else:
+        return LinkedBinaryTree(LinkedBinaryTree.Node(""))
 
 def prefix_to_postfix(prefix_exp_str):
     tree = create_expression_tree(prefix_exp_str)
     return " ".join([str(x.data) for x in tree.postorder()])
 
 if __name__ == "__main__": 
+    exp_tree = create_expression_tree("")
+    for i in exp_tree.preorder():
+        print(i.data, end=' ')
+    print()
     exp_tree = create_expression_tree('* 2 + - 15 6 4')
     for i in exp_tree.preorder():
         print(i.data, end=' ')
