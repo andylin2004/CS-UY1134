@@ -1,4 +1,4 @@
-class BinartSearchTreeMap:
+class BinarySearchTreeMap:
     class Item:
         def __init__(self, key, value=None):
             self.key = key
@@ -69,8 +69,8 @@ class BinartSearchTreeMap:
 
     # assumes that key is not in the tree
     def insert(self, key, value):
-        new_item = BinartSearchTreeMap.Item(key, value)
-        new_node = BinartSearchTreeMap.Node(new_item)
+        new_item = BinarySearchTreeMap.Item(key, value)
+        new_node = BinarySearchTreeMap.Node(new_item)
         if(self.is_empty() == True):
             self.root = new_node
             self.n = 1
