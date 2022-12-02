@@ -15,7 +15,7 @@ def glt_n(bst, n): #glt = greatest less than
     ''' Returns the greatest number in the binary search tree
     less than or equal to n'''
     node = bst.root
-    while bst.root is not None and ((bst.root.item.key < n and bst.root.right is not None) or (bst.root.item.key > n and bst.root.left is not None)):
+    while bst.root is not None and bst.root.item.key != n and ((bst.root.item.key < n and bst.root.right is not None) or (bst.root.item.key > n and bst.root.left is not None)):
         if bst.root.item.key < n:
             node = node.right
         elif bst.root.item.key > n:
