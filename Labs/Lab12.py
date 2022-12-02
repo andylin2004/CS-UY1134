@@ -35,8 +35,11 @@ def compare_BST(bst1, bst2):
             left_result = recursive_item_collector(root.left)
             right_result = recursive_item_collector(root.right)
             return left_result + right_result + [root.item]
-        
-    for i in recursive_item_collector(bst1):
-        if bst2.find_node(i.key).item.value != i.value:
-            return False
-    return True
+    
+    if len(bst1) != len(bst2):
+        return False
+    else:
+        for i in recursive_item_collector(bst1):
+            if bst2.find_node(i.key).item.value != i.value:
+                return False
+        return True
