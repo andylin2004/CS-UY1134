@@ -4,6 +4,7 @@ def create_chain_bst(n):
     bst = BinarySearchTreeMap()
     for i in range(1, n+1):
         bst.insert(i, i)
+    return bst
 
 def add_items(bst, low, high):
     mid = (high + low) // 2
@@ -19,3 +20,5 @@ def create_complete_bst(n):
 
 if __name__ == "__main__": 
     print(create_complete_bst(7))
+    n = create_chain_bst(2)
+    print(len(n))
