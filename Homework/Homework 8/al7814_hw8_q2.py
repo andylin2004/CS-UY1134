@@ -8,7 +8,6 @@ def create_chain_bst(n):
 def create_complete_bst(n):
     def add_items(bst, low, high):
         mid = (high + low) // 2
-        print(low, mid, high)
         bst.insert(mid, mid)
         if high-low > 1:
             add_items(bst, low, mid - 1)
