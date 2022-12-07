@@ -8,19 +8,18 @@ def restore_bst(prefix_lst):
             new_node = BinarySearchTreeMap.Node(BinarySearchTreeMap.Item(prefix_lst[cur_indice], prefix_lst[cur_indice]))
             node.left = new_node
             if cur_indice + 1 < len(prefix_lst):
-                if prefix_lst[cur_indice] < prefix_lst[0]:
-                    if prefix_lst[cur_indice + 1] < prefix_lst[0]:
-                        if prefix_lst[cur_indice + 1] > node.item.key: 
-                            recursive_part(node, cur_indice + 1)
-                        else:
-                            recursive_part(node.left, cur_indice + 1)
+                if prefix_lst[cur_indice + 1] < prefix_lst[0]:
+                    if prefix_lst[cur_indice + 1] > node.item.key: 
+                        recursive_part(node, cur_indice + 1)
                     else:
-                        recursive_part(bst.root, cur_indice + 1)
+                        recursive_part(node.left, cur_indice + 1)
+                else:
+                    recursive_part(bst.root, cur_indice + 1)
         else:
             new_node = BinarySearchTreeMap.Node(BinarySearchTreeMap.Item(prefix_lst[cur_indice], prefix_lst[cur_indice]))
             node.right = new_node
             if cur_indice + 1 < len(prefix_lst):
-                if prefix_lst[cur_indice] < prefix_lst[0]:
+                if prefix_lst[cur_indice + 1] > prefix_lst[0]:
                     if prefix_lst[cur_indice + 1] < node.item.key: 
                         recursive_part(node, cur_indice + 1)
                     else:
@@ -29,4 +28,8 @@ def restore_bst(prefix_lst):
     if len(prefix_lst) > 1:
         bst.insert(prefix_lst[0], prefix_lst[0])
         recursive_part(bst.root, 1)
-        
+    return bst
+
+if __name__ == "__main__": 
+    bst = restore_bst([9, 7, 3, 1, 5, 13, 11, 15])
+    print([str(x.item.key) for x in bst.inorder()])
