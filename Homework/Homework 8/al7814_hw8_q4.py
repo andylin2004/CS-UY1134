@@ -37,6 +37,7 @@ def find_min_abs_difference(bst):
     return recursive_part(bst.root, False)[1]
 
 if __name__ == "__main__": 
+    from al7814_hw8_q3 import *
     bst = BinarySearchTreeMap()
     bst.insert(9,1)
     bst.insert(7,1)
@@ -47,4 +48,6 @@ if __name__ == "__main__":
     bst.insert(17,1)
     bst.insert(25,1)
     print([x.item.key for x in bst.inorder()])
+    print(find_min_abs_difference(bst))
+    bst = restore_bst([9, 7, 3, 1, 5, 13, 11, 15])
     print(find_min_abs_difference(bst))
