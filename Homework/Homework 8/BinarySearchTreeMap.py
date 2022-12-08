@@ -10,7 +10,9 @@ class BinarySearchTreeMap:
             self.item = item
             self.parent = None
             self.left = None
+            self.left_child_count = 0
             self.right = None
+            self.right_child_count = 0
 
         def num_children(self):
             count = 0
@@ -80,8 +82,10 @@ class BinarySearchTreeMap:
             while(cursor is not None):
                 parent = cursor
                 if(key < cursor.item.key):
+                    cursor.left_child_count += 1
                     cursor = cursor.left
                 else:
+                    cursor.right_child_count += 1
                     cursor = cursor.right
             if(key < parent.item.key):
                 parent.left = new_node
@@ -186,7 +190,38 @@ class BinarySearchTreeMap:
                 yield from subtree_inorder(root.right)
 
         yield from subtree_inorder(self.root)
+    
+    def get_ith_smallest(self, i):
+        def recursive_part(node, indice):
+            if indice <= node.left_child_count:
+                return recursive_part(node.left, indice)
+            elif indice == node.left_child_count + 1:
+                return node.item.key
+            else:
+                return recursive_part(node.right, indice - 1 - node.left_child_count)
+
+        if i >= self.n:
+            raise IndexError("Out of bounds")
+        else:
+            return recursive_part(self.root, i)
 
     def __iter__(self):
         for node in self.inorder():
             yield node.item.key
+
+if __name__ == "__main__":
+    bst = BinarySearchTreeMap()
+    bst[7] = None
+    bst[5] = None
+    bst[1] = None
+    bst[14] = None
+    bst[10] = None
+    bst[3] = None
+    bst[9] = None
+    bst[13] = None
+    print(bst.get_ith_smallest(3))
+    print(bst.get_ith_smallest(6))
+    del(bst[14])
+    del(bst[5])
+    print(bst.get_ith_smallest(3))
+    print(bst.get_ith_smallest(6))
