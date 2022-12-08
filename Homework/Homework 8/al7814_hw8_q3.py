@@ -4,9 +4,7 @@ def restore_bst(prefix_lst):
     bst = BinarySearchTreeMap()
 
     def recursive_part(node, cur_indice):
-        print(node.item.key, prefix_lst[cur_indice])
         if prefix_lst[cur_indice] < node.item.key:
-            print("l")
             new_node = BinarySearchTreeMap.Node(BinarySearchTreeMap.Item(prefix_lst[cur_indice]))
             node.left = new_node
             if cur_indice + 1 < len(prefix_lst):
@@ -17,7 +15,6 @@ def restore_bst(prefix_lst):
                 else:
                     recursive_part(node, cur_indice + 1)
         else:
-            print("r")
             new_node = BinarySearchTreeMap.Node(BinarySearchTreeMap.Item(prefix_lst[cur_indice]))
             node.right = new_node
             if cur_indice + 1 < len(prefix_lst):
