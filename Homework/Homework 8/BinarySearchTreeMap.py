@@ -176,6 +176,17 @@ class BinarySearchTreeMap:
 
         yield from subtree_inorder(self.root)
 
+    def preorder(self):
+        def subtree_inorder(root):
+            if (root is None):
+                return
+            else:
+                yield root
+                yield from subtree_inorder(root.left)
+                yield from subtree_inorder(root.right)
+
+        yield from subtree_inorder(self.root)
+
     def __iter__(self):
         for node in self.inorder():
             yield node.item.key

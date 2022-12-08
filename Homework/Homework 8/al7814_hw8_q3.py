@@ -33,3 +33,12 @@ def restore_bst(prefix_lst):
 if __name__ == "__main__": 
     bst = restore_bst([9, 7, 3, 1, 5, 13, 11, 15])
     print([str(x.item.key) for x in bst.inorder()])
+    print([str(x.item.key) for x in bst.preorder()])
+    bst = BinarySearchTreeMap()
+    for i in range(20):
+        bst.insert(i, None)
+    print([str(x.item.key) for x in bst.inorder()])
+    preorder = [x.item.key for x in bst.preorder()]
+    print(preorder)
+    bst = restore_bst(preorder)
+    print([str(x.item.key) for x in bst.inorder()])
