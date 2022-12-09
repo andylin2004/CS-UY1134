@@ -1,4 +1,4 @@
-class BinartSearchTreeMap:
+class BinarySearchTreeMap:
     class Item:
         def __init__(self, key, value=None):
             self.key = key
@@ -10,7 +10,9 @@ class BinartSearchTreeMap:
             self.item = item
             self.parent = None
             self.left = None
+            self.left_child_count = 0
             self.right = None
+            self.right_child_count = 0
 
         def num_children(self):
             count = 0
@@ -23,6 +25,8 @@ class BinartSearchTreeMap:
         def disconnect(self):
             self.item = None
             self.parent = None
+            self.right_child_count = None
+            self.left_child_count = None
             self.left = None
             self.right = None
 
@@ -69,8 +73,8 @@ class BinartSearchTreeMap:
 
     # assumes that key is not in the tree
     def insert(self, key, value):
-        new_item = BinartSearchTreeMap.Item(key, value)
-        new_node = BinartSearchTreeMap.Node(new_item)
+        new_item = BinarySearchTreeMap.Item(key, value)
+        new_node = BinarySearchTreeMap.Node(new_item)
         if(self.is_empty() == True):
             self.root = new_node
             self.n = 1
@@ -80,8 +84,10 @@ class BinartSearchTreeMap:
             while(cursor is not None):
                 parent = cursor
                 if(key < cursor.item.key):
+                    cursor.left_child_count += 1
                     cursor = cursor.left
                 else:
+                    cursor.right_child_count += 1
                     cursor = cursor.right
             if(key < parent.item.key):
                 parent.left = new_node
@@ -113,8 +119,10 @@ class BinartSearchTreeMap:
             elif (num_children == 1):
                 if (self.root.left is not None):
                     self.root = self.root.left
+                    self.root.left_child_count -= 1
                 else:
                     self.root = self.root.right
+                    self.root.right_child_count -= 1
                 self.root.parent = None
                 node_to_delete.disconnect()
                 self.n -= 1
@@ -129,8 +137,10 @@ class BinartSearchTreeMap:
                 parent = node_to_delete.parent
                 if(node_to_delete is parent.left):
                     parent.left = None
+                    parent.left_child_count -= 1
                 else:
                     parent.right = None
+                    parent.right_child_count -= 1
 
                 node_to_delete.disconnect()
                 self.n -= 1
@@ -144,8 +154,10 @@ class BinartSearchTreeMap:
 
                 if(node_to_delete is parent.left):
                     parent.left = child
+                    parent.left_child_count -= 1
                 else:
                     parent.right = child
+                    parent.right_child_count -= 1
                 child.parent = parent
 
                 node_to_delete.disconnect()
@@ -176,6 +188,63 @@ class BinartSearchTreeMap:
 
         yield from subtree_inorder(self.root)
 
+    def preorder(self):
+        def subtree_inorder(root):
+            if (root is None):
+                return
+            else:
+                yield root
+                yield from subtree_inorder(root.left)
+                yield from subtree_inorder(root.right)
+
+        yield from subtree_inorder(self.root)
+    
+    def get_ith_smallest(self, i):
+        def recursive_part(node, indice):
+            if indice <= node.left_child_count:
+                return recursive_part(node.left, indice)
+            elif indice == node.left_child_count + 1:
+                return node.item.key
+            else:
+                return recursive_part(node.right, indice - 1 - node.left_child_count)
+
+        if i > self.n:
+            raise IndexError("Out of bounds")
+        else:
+            return recursive_part(self.root, i)
+
     def __iter__(self):
         for node in self.inorder():
             yield node.item.key
+
+if __name__ == "__main__":
+    bst = BinarySearchTreeMap()
+    bst[7] = None
+    bst[5] = None
+    bst[1] = None
+    bst[14] = None
+    bst[10] = None
+    bst[3] = None
+    bst[9] = None
+    bst[13] = None
+    print(bst.get_ith_smallest(3))
+    print(bst.get_ith_smallest(6))
+    print([x.item.key for x in bst.inorder()])
+    del(bst[14])
+    print("deleted 14")
+    print(bst.find_node(3))
+    print([x.item.key for x in bst.inorder()])
+    # del(bst[5])
+    # print("deleted 5")
+    print(bst.find_node(7))
+    print([x.item.key for x in bst.inorder()])
+    print(bst.get_ith_smallest(3))
+    print([x.item.key for x in bst.inorder()])
+    print(bst.get_ith_smallest(6))
+    del(bst[7])
+    print(bst.find_node(5))
+    print([x.item.key for x in bst.inorder()])
+    print(bst.get_ith_smallest(2))
+    print(bst.get_ith_smallest(3))
+    print(bst.get_ith_smallest(4))
+    print(bst.get_ith_smallest(6))
