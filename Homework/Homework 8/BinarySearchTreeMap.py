@@ -23,19 +23,10 @@ class BinarySearchTreeMap:
             return count
 
         def disconnect(self):
-            # def decrement(start_node):
-            #     cur_node = start_node
-            #     while cur_node.parent is not None:
-            #         print(cur_node.item.key)
-            #         if cur_node.parent.left is cur_node:
-            #             cur_node.parent.left_child_count -= 1
-            #         else:
-            #             cur_node.parent.right_child_count -= 1
-            #         cur_node = cur_node.parent
-
-            decrement(self)
             self.item = None
             self.parent = None
+            self.right_child_count = None
+            self.left_child_count = None
             self.left = None
             self.right = None
 
@@ -146,8 +137,10 @@ class BinarySearchTreeMap:
                 parent = node_to_delete.parent
                 if(node_to_delete is parent.left):
                     parent.left = None
+                    parent.left_child_count -= 1
                 else:
                     parent.right = None
+                    parent.right_child_count -= 1
 
                 node_to_delete.disconnect()
                 self.n -= 1
@@ -239,10 +232,21 @@ if __name__ == "__main__":
     print([x.item.key for x in bst.inorder()])
     del(bst[14])
     print("deleted 14")
+    print(bst.find_node(3))
     print([x.item.key for x in bst.inorder()])
-    del(bst[5])
-    print("deleted 5")
+    # del(bst[5])
+    # print("deleted 5")
+    print(bst.find_node(7))
     print([x.item.key for x in bst.inorder()])
     print(bst.get_ith_smallest(3))
     print([x.item.key for x in bst.inorder()])
     print(bst.get_ith_smallest(6))
+    print("pfi pioewf iohfwe")
+    del(bst[7])
+    print(bst.find_node(5))
+    print([x.item.key for x in bst.inorder()])
+    print(bst.get_ith_smallest(2))
+    print(bst.get_ith_smallest(3))
+    print(bst.get_ith_smallest(4))
+    print(bst.get_ith_smallest(6))
+    print(bst.get_ith_smallest(7))
