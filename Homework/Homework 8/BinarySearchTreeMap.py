@@ -209,7 +209,7 @@ class BinarySearchTreeMap:
                 return recursive_part(node.right, indice - 1 - node.left_child_count)
 
         if i > self.n:
-            raise IndexError("Out of bounds", [x.item.key for x in bst.inorder()])
+            raise IndexError("Out of bounds", [x.item.key for x in self.inorder()])
         else:
             return recursive_part(self.root, i)
 
