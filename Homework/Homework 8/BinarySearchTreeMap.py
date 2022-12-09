@@ -23,6 +23,17 @@ class BinarySearchTreeMap:
             return count
 
         def disconnect(self):
+            # def decrement(start_node):
+            #     cur_node = start_node
+            #     while cur_node.parent is not None:
+            #         print(cur_node.item.key)
+            #         if cur_node.parent.left is cur_node:
+            #             cur_node.parent.left_child_count -= 1
+            #         else:
+            #             cur_node.parent.right_child_count -= 1
+            #         cur_node = cur_node.parent
+
+            decrement(self)
             self.item = None
             self.parent = None
             self.left = None
@@ -117,8 +128,10 @@ class BinarySearchTreeMap:
             elif (num_children == 1):
                 if (self.root.left is not None):
                     self.root = self.root.left
+                    self.root.left_child_count -= 1
                 else:
                     self.root = self.root.right
+                    self.root.right_child_count -= 1
                 self.root.parent = None
                 node_to_delete.disconnect()
                 self.n -= 1
@@ -148,8 +161,10 @@ class BinarySearchTreeMap:
 
                 if(node_to_delete is parent.left):
                     parent.left = child
+                    parent.left_child_count -= 1
                 else:
                     parent.right = child
+                    parent.right_child_count -= 1
                 child.parent = parent
 
                 node_to_delete.disconnect()
@@ -200,8 +215,8 @@ class BinarySearchTreeMap:
             else:
                 return recursive_part(node.right, indice - 1 - node.left_child_count)
 
-        if i >= self.n:
-            raise IndexError("Out of bounds")
+        if i > self.n:
+            raise IndexError("Out of bounds", [x.item.key for x in bst.inorder()])
         else:
             return recursive_part(self.root, i)
 
@@ -221,7 +236,13 @@ if __name__ == "__main__":
     bst[13] = None
     print(bst.get_ith_smallest(3))
     print(bst.get_ith_smallest(6))
+    print([x.item.key for x in bst.inorder()])
     del(bst[14])
+    print("deleted 14")
+    print([x.item.key for x in bst.inorder()])
     del(bst[5])
+    print("deleted 5")
+    print([x.item.key for x in bst.inorder()])
     print(bst.get_ith_smallest(3))
+    print([x.item.key for x in bst.inorder()])
     print(bst.get_ith_smallest(6))
