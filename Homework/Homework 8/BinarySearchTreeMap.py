@@ -241,7 +241,6 @@ if __name__ == "__main__":
     print(bst.get_ith_smallest(3))
     print([x.item.key for x in bst.inorder()])
     print(bst.get_ith_smallest(6))
-    print("pfi pioewf iohfwe")
     del(bst[7])
     print(bst.find_node(5))
     print([x.item.key for x in bst.inorder()])
