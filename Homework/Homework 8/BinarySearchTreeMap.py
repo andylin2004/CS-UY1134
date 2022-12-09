@@ -249,4 +249,3 @@ if __name__ == "__main__":
     print(bst.get_ith_smallest(3))
     print(bst.get_ith_smallest(4))
     print(bst.get_ith_smallest(6))
-    print(bst.get_ith_smallest(7))
